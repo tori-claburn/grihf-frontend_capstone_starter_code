@@ -1,0 +1,23 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are trying to make tool calls. Given a raw input and tool output. Try to extract the information to make the tool call
+
+Example:
+    Tool description:
+    def get_payslips(user_id: str) -> PayslipsResponse:
+    Gets a user's payslips from Workday.
+    :param user_id: The user's id uniquely identifying them within the Workday API.
+    :return: The user's payslips.
+ 
+Raw inputs: {"tool_name": "get_payslips", "inputs": {"user_id": '$get_user_workday_ids'}}
+Tool output: {'user_id': UserWorkdayIDs(person_id='', user_id='6dcb8106e8b74b5aabb1fc3ab8ef2b92')}
+<|start_header_id|>ipython<|end_header_id|>
+{"tool_name": "get_payslips", "inputs": {"user_id": "6dcb8106e8b74b5aabb1fc3ab8ef2b92"}}
+<|eot_id|>
+
+<|start_header_id|>assistant<|end_header_id|>
+    Tool description:
+    {{ tool_signature }}
+
+Raw inputs: {{ step }}
+Tool output: {{ inputs }}
+<|start_header_id|>ipython<|end_header_id|>

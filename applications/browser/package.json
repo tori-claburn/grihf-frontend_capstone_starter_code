@@ -1,0 +1,154 @@
+{
+  "private": true,
+  "name": "cloud-ide",
+  "description": "Cloud IDE IDE in the browser",
+  "productName": "Cloud IDE",
+  "version": "1.50.0",
+  "license": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+  "author": "Eclipse Theia <theia-dev@eclipse.org>",
+  "homepage": "https://github.com/eclipse-theia/theia-blueprint#readme",
+  "bugs": {
+    "url": "https://github.com/eclipse-theia/theia/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eclipse-theia/theia-blueprint.git"
+  },
+  "engines": {
+    "yarn": ">=1.7.0 <2",
+    "node": ">=12.14.1"
+  },
+  "theia": {
+    "frontend": {
+      "config": {
+        "applicationName": "Cloud IDE",
+        "warnOnPotentiallyInsecureHostPattern": false,
+        "preferences": {
+          "toolbar.showToolbar": true,
+          "files.enableTrash": false,
+          "files.defaultLanguage": "markdown",
+          "workbench.startupEditor": "welcomePage",
+          "security.workspace.trust.enabled": true,
+          "markdown-preview-enhanced.enableScriptExecution": true
+        }
+      }
+    },
+    "backend": {
+      "config": {
+        "warnOnPotentiallyInsecureHostPattern": false,
+        "startupTimeout": -1,
+        "resolveSystemPlugins": false
+      }
+    },
+    "generator": {
+      "config": {
+        "preloadTemplate": "./resources/preload.html"
+      }
+    }
+  },
+  "dependencies": {
+    "@theia/bulk-edit": "1.50.0",
+    "@theia/callhierarchy": "1.50.0",
+    "@theia/cli": "1.50.0",
+    "@theia/console": "1.50.0",
+    "@theia/core": "1.50.0",
+    "@theia/debug": "1.50.0",
+    "@theia/editor": "1.50.0",
+    "@theia/editor-preview": "1.50.0",
+    "@theia/external-terminal": "1.50.0",
+    "@theia/file-search": "1.50.0",
+    "@theia/filesystem": "1.50.0",
+    "@theia/getting-started": "1.50.0",
+    "@theia/git": "1.50.0",
+    "@theia/keymaps": "1.50.0",
+    "@theia/markers": "1.50.0",
+    "@theia/memory-inspector": "1.50.0",
+    "@theia/messages": "1.50.0",
+    "@theia/metrics": "1.50.0",
+    "@theia/mini-browser": "1.50.0",
+    "@theia/monaco": "1.50.0",
+    "@theia/navigator": "1.50.0",
+    "@theia/notebook": "1.50.0",
+    "@theia/outline-view": "1.50.0",
+    "@theia/output": "1.50.0",
+    "@theia/plugin-dev": "1.50.0",
+    "@theia/plugin-ext": "1.50.0",
+    "@theia/plugin-ext-vscode": "1.50.0",
+    "@theia/plugin-metrics": "1.50.0",
+    "@theia/preferences": "1.50.0",
+    "@theia/process": "1.50.0",
+    "@theia/property-view": "1.50.0",
+    "@theia/scm": "1.50.0",
+    "@theia/scm-extra": "1.50.0",
+    "@theia/search-in-workspace": "1.50.0",
+    "@theia/secondary-window": "1.50.0",
+    "@theia/task": "1.50.0",
+    "@theia/terminal": "1.50.0",
+    "@theia/timeline": "1.50.0",
+    "@theia/toolbar": "1.50.0",
+    "@theia/typehierarchy": "1.50.0",
+    "@theia/userstorage": "1.50.0",
+    "@theia/variable-resolver": "1.50.0",
+    "@theia/vsx-registry": "1.50.0",
+    "@theia/workspace": "1.50.0",
+    "fs-extra": "^9.0.1",
+    "skills-network-extension": "0.1.0",
+    "blueprint-product-ext": "1.50.0"
+  },
+  "devDependencies": {
+    "@theia/cli": "1.50.0"
+  },
+  "scripts": {
+    "clean": "theia clean && rimraf node_modules",
+    "build": "yarn -s rebuild && theia build --app-target=\"browser\" --mode development",
+    "build:prod": "yarn -s rebuild && theia build --app-target=\"browser\"",
+    "rebuild": "theia rebuild:browser --cacheRoot ../..",
+    "bundle": "yarn -s rebuild && theia build",
+    "compile": "tsc -b",
+    "start": "theia start --plugins=local-dir:./plugins",
+    "watch": "concurrently --kill-others -n tsc,bundle -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s watch:bundle\"",
+    "download:plugins": "theia download:plugins --parallel=false",
+    "setup:cli": "yarn add @theia/cli@1.50.0"
+  },
+  "theiaPluginsDir": "plugins",
+  "theiaPlugins": {
+    "eclipse-theia.builtin-extension-pack": "https://open-vsx.org/api/eclipse-theia/builtin-extension-pack/1.79.0/file/eclipse-theia.builtin-extension-pack-1.79.0.vsix",
+    "EditorConfig.EditorConfig": "https://open-vsx.org/api/EditorConfig/EditorConfig/0.16.6/file/EditorConfig.EditorConfig-0.16.6.vsix",
+    "redhat.java": "https://open-vsx.org/api/redhat/java/linux-x64/1.20.2023061704/file/redhat.java-1.20.2023061704@linux-x64.vsix",
+    "vscjava.vscode-java-debug": "https://open-vsx.org/api/vscjava/vscode-java-debug/0.51.0/file/vscjava.vscode-java-debug-0.51.0.vsix",
+    "vscjava.vscode-java-test": "https://open-vsx.org/api/vscjava/vscode-java-test/0.39.0/file/vscjava.vscode-java-test-0.39.0.vsix",
+    "vscjava.vscode-maven": "https://open-vsx.org/api/vscjava/vscode-maven/0.41.0/file/vscjava.vscode-maven-0.41.0.vsix",
+    "vscjava.vscode-java-dependency": "https://open-vsx.org/api/vscjava/vscode-java-dependency/0.23.0/file/vscjava.vscode-java-dependency-0.23.0.vsix",
+    "redhat.vscode-xml": "https://open-vsx.org/api/redhat/vscode-xml/0.25.2023022303/file/redhat.vscode-xml-0.25.2023022303.vsix",
+    "vscode-clangd": "https://open-vsx.org/api/llvm-vs-code-extensions/vscode-clangd/0.1.24/file/llvm-vs-code-extensions.vscode-clangd-0.1.24.vsix",
+    "cdt-gdb-vscode": "https://open-vsx.org/api/eclipse-cdt/cdt-gdb-vscode/0.0.99/file/eclipse-cdt.cdt-gdb-vscode-0.0.99.vsix",
+    "vscode-eslint": "https://github.com/theia-ide/vscode-eslint/releases/download/release%2F2.0.15/vscode-eslint-2.0.15.vsix",
+    "vscode-php-intellisense": "https://open-vsx.org/api/zobo/php-intellisense/1.1.3/file/zobo.php-intellisense-1.1.3.vsix",
+    "vscode-php-debug": "https://open-vsx.org/api/xdebug/php-debug/1.32.1/file/xdebug.php-debug-1.32.1.vsix",
+    "plantuml": "https://open-vsx.org/api/jebbs/plantuml/2.17.5/file/jebbs.plantuml-2.17.5.vsix",
+    "yangster": "https://open-vsx.org/api/typefox/yang-vscode/2.2.0/file/typefox.yang-vscode-2.2.0.vsix",
+    "liveserver": "https://open-vsx.org/api/ritwickdey/LiveServer/5.7.9/file/ritwickdey.LiveServer-5.7.9.vsix",
+    "redhat.vscode-yaml": "https://open-vsx.org/api/redhat/vscode-yaml/1.13.0/file/redhat.vscode-yaml-1.13.0.vsix",
+    "vscode.markdown-language-features": "https://open-vsx.org/api/vscode/markdown-language-features/1.39.2/file/vscode.markdown-language-features-1.39.2.vsix",
+    "vscode-md-preview": "https://open-vsx.org/api/shd101wyy/markdown-preview-enhanced/0.7.6/file/shd101wyy.markdown-preview-enhanced-0.7.6.vsix",
+    "ms-vscode.js-debug": "https://open-vsx.org/api/ms-vscode/js-debug/1.78.0/file/ms-vscode.js-debug-1.78.0.vsix",
+    "ms-vscode.js-debug-companion": "https://open-vsx.org/api/ms-vscode/js-debug-companion/1.1.2/file/ms-vscode.js-debug-companion-1.1.2.vsix"
+  },
+  "theiaPluginsExcludeIds": [
+    "ms-vscode.js-debug-companion",
+    "vscode.extension-editing",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "vscode.builtin-notebook-renderers",
+    "vscode.extension-editing",
+    "vscode.microsoft-authentication",
+    "vscode.html-language-features",
+    "vscode.git",
+    "vscode.git-base",
+    "vscode.git-ui",
+    "vscode.github",
+    "vscode.github-authentication",
+    "vscode.ipynb",
+    "vscode.microsoft-authentication",
+    "ms-vscode.references-view"
+  ]
+}

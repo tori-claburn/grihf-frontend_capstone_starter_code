@@ -1,0 +1,1111 @@
+{
+  "pathToEnvJson": "/home/theia/.sn/config.json",
+  "logFilePath": "/home/theia/.sn/sn-logs.log",
+  "pathToOpenDatabases": "/home/theia/.sn/open_databases.json",
+
+  "development": {
+    "isDevelopment": false,
+    "environment": "docker"
+  },
+  "applicationDetails": {
+    "mysql": {
+      "category": "database",
+      "startCommand": "cd /usr/local/bin/mysql && ./start_mysql.sh",
+      "stopCommand": "cd /usr/local/bin/mysql && ./stop_mysql.sh",
+      "statusCommand": "cd /usr/local/bin/mysql && ./status_mysql.sh",
+      "timeoutHealthCheckLimit": 10,
+      "id": "mysql",
+      "name": "MySQL",
+      "description": "Connect to MySQL and phpMyAdmin directly in your Skills Network Labs environment.",
+      "hasDatabaseServer": true,
+      "loadingMessages": [
+        "Fun fact: The MySQL Dolphin is named Sakila.",
+        "Did you know that the maximum MySQL table row size is 65,535 bytes?",
+        "MySQL is a relational database management system used by millions worldwide!",
+        "MySQL was first released on May 23, 1995."
+      ],
+      "web": {
+        "enabled": true,
+        "webDetails":
+          {
+            "name": "phpMyAdmin",
+            "port": "8080",
+            "suffix": ""
+          }
+      },
+      "shell": {
+        "enabled": true,
+        "name": "MySQL CLI"
+      },
+      "requiredPorts": {
+        "internal": ["80", "3306"],
+        "external": ["8080", "3306"]
+      },
+      "healthChecks": [
+        {
+          "type": "bashCommand",
+          "command": "echo healthchecked",
+          "timeout": 2000,
+          "retries": 20
+        }
+      ],
+      "credentials": {
+        "type": "file",
+        "location": "/tmp/mysql_details.json",
+        "summary": [
+          {
+            "label": "Username",
+            "value": "${USERNAME}"
+          },
+          {
+            "label": "Password",
+            "value": "${PASSWORD}"
+          }
+        ],
+        "connectionInformation":
+        [
+          {
+            "label": "Host",
+            "value": "${HOST}"
+          },
+          {
+            "label": "Port",
+            "value": "90000"
+          },
+          {
+            "label": "MySQL CLI Command",
+            "value": "mysql --host=${HOST} --port=3306 --user=root --password=${PASSWORD}"
+          },
+          {
+            "label": "URL",
+            "value": "${PMA_ABSOLUTE_URI}"
+          }
+        ]
+      },
+      "versions": {
+        "server": "8.0.22",
+        "web": "5.0.4",
+        "shell": "2.0.2"
+      },
+      "supportLink": "https://support.labs.cognitiveclass.ai/knowledgebase/articles/1976796-how-to-launch-mysql-postgresql-mongodb-cassandr"
+    },
+    "postgres": {
+      "category": "database",
+      "startCommand": "cd /usr/local/bin/postgres && ./start_postgres.sh",
+      "stopCommand": "cd /usr/local/bin/postgres && ./stop_postgres.sh",
+      "statusCommand": "cd /usr/local/bin/postgres && ./status_postgres.sh",
+      "timeoutHealthCheckLimit": 10,
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "description": "Connect to PostgreSQL and pgAdmin directly in your Skills Network Labs environment.",
+      "hasDatabaseServer": true,
+      "loadingMessages": [
+        "Get the size of your database with the command pg_database_size()!",
+        "PostgreSQL offers functionality for Full Text Search! Use the functions to_tsvector and to_tsquery.",
+        "Unlike SQL, PostgreSQL is an object-relational database.",
+        "List all available databases in the server with the command \\l"
+      ],
+      "web": {
+        "enabled": true,
+        "webDetails":
+          {
+            "name": "pgAdmin",
+            "port": "5050",
+            "suffix": "/browser/"
+          }
+      },
+      "shell": {
+        "enabled": true,
+        "name": "PostgreSQL CLI"
+      },
+      "requiredPorts": {
+        "internal": ["5432", "5050"],
+        "external": ["5432", "5050"]
+      },
+      "healthChecks": [
+        {
+          "type": "bashCommand",
+          "command": "echo healthchecked",
+          "timeout": 2000,
+          "retries": 20
+        }
+      ],
+      "credentials": {
+        "type": "file",
+        "location": "/tmp/postgres_details.json",
+        "summary": [
+          {
+            "label": "Username",
+            "value": "${USERNAME}"
+          },
+          {
+            "label": "Password",
+            "value": "${POSTGRES_PASSWORD}"
+          }
+        ],
+        "connectionInformation":
+        [
+          {
+            "label": "Host",
+            "value": "127.0.0.1"
+          },
+          {
+            "label": "Port",
+            "value": "5432"
+          },
+          {
+            "label": "PostgreSQL CLI Command",
+            "type": "file",
+            "location": "/tmp/postgres_cli_start",
+            "value": ""
+          },
+          {
+            "label": "URL",
+            "value": "${POSTGRES_URL}"
+          }
+        ]
+      },
+      "versions": {
+        "server": "v13.2",
+        "web": "v5.0",
+        "shell": "v14.5"
+      },
+      "supportLink": "https://support.labs.cognitiveclass.ai/knowledgebase/articles/1976796-how-to-launch-mysql-postgresql-mongodb-cassandr"
+    },
+    "cassandra": {
+      "category": "database",
+      "startCommand": "cd /usr/local/bin/cassandra && ./start_cassandra.sh",
+      "stopCommand": "cd /usr/local/bin/cassandra && ./stop_cassandra.sh",
+      "statusCommand": "echo statusChecked",
+      "timeoutHealthCheckLimit": 10,
+      "id": "cassandra",
+      "name": "Cassandra",
+      "description": "Connect to Cassandra directly in your Skills Network Labs environment.",
+      "hasDatabaseServer": true,
+      "loadingMessages": [
+        "Cassandra is a NoSQL distributed database.",
+        "Did you know that Cassandra is named after the Trojan mythological prophet?",
+        "The Blob datatype in Cassandra is a constant hexadecimal number.",
+        "Cassandra was first released in July 2018."
+      ],
+      "web": {
+        "enabled": false,
+        "webDetails": {}
+      },
+      "shell": {
+        "enabled": true,
+        "name": "Cassandra CLI"
+      },
+      "requiredPorts": {
+        "internal": ["7000", "9042", "6379", "5555"],
+        "external": ["7000", "9042", "6379", "5555"]
+      },
+      "healthChecks": [
+        {
+          "type": "bashCommand",
+          "command": "echo healthchecked",
+          "timeout": 2000,
+          "retries": 20
+        }
+      ],
+      "credentials": {
+        "summary": [
+          {
+            "label": "Username",
+            "value": "${USERNAME}"
+          },
+          {
+            "label": "Password",
+            "value": "${CASSANDRA_PASSWORD}"
+          }
+        ],
+        "connectionInformation":
+        [
+          {
+            "label": "Host",
+            "value": "127.0.0.1"
+          },
+          {
+            "label": "Port",
+            "value": "9042"
+          },
+          {
+            "label": "Cassandra CLI Command",
+            "type": "file",
+            "location": "/tmp/cassandra_cli_start",
+            "value": ""
+          }
+        ]
+      },
+      "versions": {
+        "server": "v4.1",
+        "shell": "v5.0.1"
+      },
+      "supportLink": "https://support.labs.cognitiveclass.ai/knowledgebase/articles/1976796-how-to-launch-mysql-postgresql-mongodb-cassandr"
+    },
+    "mongo": {
+      "category": "database",
+      "startCommand": "cd /usr/local/bin/mongodb && ./start_mongo.sh",
+      "stopCommand": "cd /usr/local/bin/mongodb && ./stop_mongo.sh",
+      "statusCommand": "echo statusChecked",
+      "timeoutHealthCheckLimit": 10,
+      "id": "mongo",
+      "name": "MongoDB",
+      "description": "Connect to MongoDB and mongo-express directly in your Skills Network Labs environment.",
+      "hasDatabaseServer": true,
+      "loadingMessages": [
+        "MongoDB is a NoSQL database that uses JSON-like documents.",
+        "The Mongo in MongoDB is taken from the word humongous!",
+        "Create a new Collection or View in MongoDB using db.createCollection()",
+        "MongoDB was first released in August 2009."
+      ],
+      "web": {
+        "enabled": true,
+        "webDetails":
+          {
+            "name": "mongo-express",
+            "port": "8081",
+            "suffix": ""
+          }
+      },
+      "shell": {
+        "enabled": true,
+        "name": "MongoDB CLI"
+      },
+      "requiredPorts": {
+        "internal": ["27017", "8081"],
+        "external": ["27017", "8081"]
+      },
+      "healthChecks": [
+        {
+          "type": "bashCommand",
+          "command": "echo healthchecked",
+          "timeout": 2000,
+          "retries": 20
+        }
+      ],
+      "credentials": {
+        "type": "file",
+        "location": "/tmp/mongodb_details.json",
+        "summary": [
+          {
+            "label": "Username",
+            "value": "${USERNAME}"
+          },
+          {
+            "label": "Password",
+            "value": "${MONGO_PASSWORD}"
+          }
+        ],
+        "connectionInformation":
+        [
+          {
+            "label": "Host",
+            "value": "127.0.0.1"
+          },
+          {
+            "label": "Port",
+            "value": "27017"
+          },
+          {
+            "label": "MongoDB CLI Command",
+            "type": "file",
+            "location": "/tmp/mongodb_cli_start",
+            "value": ""
+          },
+          {
+            "label": "URL",
+            "value": "${MONGO_EXPRESS_URL}"
+          }
+        ]
+      },
+      "versions": {
+        "server": "3.6.3",
+        "web": "0.54.0",
+        "shell": "2.0.2"
+      },
+      "supportLink": "https://support.labs.cognitiveclass.ai/knowledgebase/articles/1976796-how-to-launch-mysql-postgresql-mongodb-cassandr"
+    },
+    "airflow": {
+      "category": "bigData",
+      "startCommand": "start_airflow true",
+      "stopCommand": "docker compose -p airflow -f /home/theia/docker-compose/airflow.yml down",
+      "timeoutHealthCheckLimit": 35,
+      "id": "airflow",
+      "name": "Apache Airflow",
+      "description": "Connect to Apache Airflow directly in your Skills Network Labs environment.",
+      "hasDatabaseServer": true,
+      "loadingMessages": [
+        "Author, schedule, and monitor workflows using Apache Airflow.",
+        "Apache Airflow was first released on June 3, 2015.",
+        "A workflow is a sequence of processes that is triggered through an event or schedule.",
+        "Workflows in Apache Airflow are written in Python."
+      ],
+      "web": {
+        "enabled": true,
+        "webDetails":
+          {
+            "name": "Airflow Webserver",
+            "port": "8080",
+            "suffix": ""
+          }
+      },
+      "shell": {
+        "enabled": true,
+        "name": "Airflow CLI (cheat sheet)"
+      },
+      "requiredPorts": {
+        "internal": ["8080", "6379", "5555", "5432", "7000", "9042"],
+        "external": ["8080", "6379", "5555", "5432", "7000", "9042"]
+      },
+      "healthChecks": [
+        {
+          "type": "inspect",
+          "container": "airflow-postgres-1",
+          "healthyTimeout": 3000,
+          "healthyRetries":125
+        },
+        {
+          "type": "inspect",
+          "container": "airflow-redis-1",
+          "healthyTimeout": 3000,
+          "healthyRetries":125
+        },
+        {
+          "type": "inspect",
+          "container": "airflow-flower-1",
+          "healthyTimeout": 3000,
+          "healthyRetries":250
+        },
+        {
+          "type": "inspect",
+          "container": "airflow-airflow-webserver-1",
+          "healthyTimeout": 3000,
+          "healthyRetries":250
+        },
+        {
+          "type": "inspect",
+          "container": "airflow-airflow-scheduler-1",
+          "healthyTimeout": 3000,
+          "healthyRetries":250
+        },
+        {
+          "type": "inspect",
+          "container": "airflow-airflow-worker-1",
+          "healthyTimeout": 3000,
+          "healthyRetries":250
+        },
+        {
+          "type": "inspect",
+          "container": "airflow-pgadmin-1",
+          "healthyTimeout": 3000,
+          "healthyRetries":250
+        }
+      ],
+      "credentials": {
+        "summary": [
+          {
+            "label": "Username",
+            "value": "airflow"
+          },
+          {
+            "label": "Password",
+            "value": "${AIRFLOW_PASSWORD}"
+          }
+        ],
+        "connectionInformation":
+        [
+          {
+            "label": "Host",
+            "value": "127.0.0.1"
+          },
+          {
+            "label": "Port",
+            "value": "8080"
+          },
+          {
+            "label": "Airflow Example Command - List DAGs",
+            "value": "airflow dags list"
+          },
+          {
+            "label": "Airflow Example Command - List Tasks",
+            "value": "airflow tasks list example_bash_operator"
+          },
+          {
+            "label": "Airflow Example Command - Run example Task",
+            "value": "airflow tasks test example_bash_operator runme_1 2015-06-01"
+          },
+          {
+            "label": "URL",
+            "value": "${AIRFLOW_WEBSERVER_URL}"
+          },
+          {
+            "label": "Postgres Connection Command",
+            "value": "psql -h localhost -U airflow -W"
+          },
+          {
+            "label": "Postgres password",
+            "value": "airflow"
+          }
+        ]
+      },
+      "versions": {
+        "server": "2.9.1",
+        "web": "2.9.1",
+        "shell": "2.9.1"
+      },
+      "supportLink": "https://support.labs.cognitiveclass.ai/knowledgebase/articles/1976796-how-to-launch-mysql-postgresql-mongodb-cassandr"
+    },
+    "codeengine": {
+      "category": "cloud",
+      "startCommand": "start_codeengine",
+      "stopCommand": "stop_codeengine",
+      "statusCommand": "status_codeengine",
+      "timeoutHealthCheckLimit": 10,
+      "id": "codeengine",
+      "name": "Code Engine",
+      "description": "Use Code Engine directly in your Lab environment. To deploy serverless apps using Code Engine you'll need a project. Code Engine Projects are provided by Skills Network at no charge.",
+      "startButton": {
+        "inactive": "Create Project",
+        "active": "Delete Project",
+        "stopping": "Project is being Deleted"
+      },
+      "statusPillLabels": {
+        "inactive": "Not Ready",
+        "starting": "Preparing",
+        "stopping": "Decomissioning",
+        "active": "Ready to Use"
+      },
+      "tabPanelHeadings": {
+        "connectionInformation": "Project Information"
+      },
+      "hasDatabaseServer": false,
+      "loadingMessages": [
+        "Code Engine is based on Kubernetes and handles cluster management for developers.",
+        "Did you know that Code Engine can build and deploy your serverless application with just a single command?",
+        "Code Engine is built on open source technologies like Kubernetes, Knative, Istio, and Tekton.",
+        "Code Engine offers out-of-the-box DDOS protection for your application."
+      ],
+      "web": {
+        "enabled": false,
+        "webDetails": {}
+      },
+      "shell": {
+        "enabled": true,
+        "name": "Code Engine CLI"
+      },
+      "requiredPorts": {
+        "internal": [],
+        "external": []
+      },
+      "healthChecks": [
+        {
+          "type": "bashCommand",
+          "command": "cat /home/theia/.sn/codeengine/done",
+          "timeout": 2000,
+          "retries": 45
+        }
+      ],
+      "credentials": {
+        "summary": [
+          {
+            "label": "Username",
+            "value": ""
+          },
+          {
+            "label": "Password",
+            "value": ""
+          }
+        ],
+        "connectionInformation":
+        [
+          {
+            "label": "Project",
+            "value": "Code Engine - ${SN_ICR_NAMESPACE}"
+          },
+          {
+            "label": "Registry Secret",
+            "value": "icr-secret"
+          },
+          {
+            "label": "ICR Namespace",
+            "value": "us.icr.io/${SN_ICR_NAMESPACE}"
+          },
+          {
+            "label": "Code Engine CLI Command",
+            "value": "ibmcloud ce"
+          },
+          {
+            "label": "Code Engine Current Project Info",
+            "value": "ibmcloud ce project current"
+          },
+          {
+            "label": "Create Simple Application",
+            "value": "ibmcloud ce application create --name myapp --image icr.io/codeengine/hello"
+          },
+          {
+            "label": "Create Application from Source",
+            "value": "ibmcloud ce application create --name myapp --build-source https://github.com/IBM/CodeEngine --build-context-dir helloworld --image us.icr.io/${SN_ICR_NAMESPACE}/helloworld --registry-secret icr-secret"
+          },
+          {
+            "label": "Create Simple Image",
+            "value": "ibmcloud ce application create --name myapp --image us.icr.io/${SN_ICR_NAMESPACE}/yourimage:tag --registry-secret icr-secret"
+          }
+        ]
+      },
+      "versions": {
+        "server": "na",
+        "web": "na",
+        "shell": "1.39.6"
+      },
+      "supportLink": "https://cloud.ibm.com/docs/codeengine?topic=codeengine-cli#cli-application"
+    },
+
+
+    "embeddableAI": {
+      "category": "embeddableAI",
+      "id": "embeddableAI",
+      "name": "Embeddable AI",
+      "description": "View services and tools available for creating Embeddable AI apps.",
+      "components": [
+          {
+            "id": "tts",
+            "name": "Text-To-Speech",
+            "category": "Text-To-Speech",
+            "enabled": true,
+            "description": "The IBM Watson Text to Speech service provides APIs that use IBM's speech-synthesis capabilities to synthesize text into natural-sounding speech in a variety of languages, dialects, and voices. The service supports at least one male or female voice, sometimes both, for each language. The audio is streamed back to the client with minimal delay.",
+            "hostname": "sn-watson-tts.labs.skills.network",
+            "image": "us.icr.io/sn-labassets/tts-standalone-full:latest",
+            "models": [
+              {
+                "id": "en-US_AllisonV3Voice",
+                "lang": "english US",
+                "gender": "female",
+                "description": "Allison: American English female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-US_AllisonV3Voice.wav"
+              },
+              {
+                "id": "fr-FR_NicolasV3Voice",
+                "lang": "french FR",
+                "gender": "male",
+                "description": "Nicolas: French (français) male voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/fr-FR_NicolasV3Voice.wav"
+              },
+              {
+                "id": "en-US_EmilyV3Voice",
+                "lang": "english US",
+                "gender": "female",
+                "description": "Emily: American English female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-US_EmilyV3Voice.wav"
+              },
+              {
+                "id": "en-GB_CharlotteV3Voice",
+                "lang": "english GB",
+                "gender": "female",
+                "description": "Charlotte: British English female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-GB_CharlotteV3Voice.wav"
+              },
+              {
+                "id": "en-GB_KateV3Voice",
+                "lang": "english GB",
+                "gender": "female",
+                "description": "Kate: British English female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-GB_KateV3Voice.wav"
+              },
+              {
+                "id": "en-US_OliviaV3Voice",
+                "lang": "english US",
+                "gender": "female",
+                "description": "Olivia: American English female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-US_OliviaV3Voice.wav"
+              },
+              {
+                "id": "it-IT_FrancescaV3Voice",
+                "lang": "italian IT",
+                "gender": "female",
+                "description": "Francesca: Italian (italiano) female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/it-IT_FrancescaV3Voice.wav"
+              },
+              {
+                "id": "en-GB_JamesV3Voice",
+                "lang": "english GB",
+                "gender": "male",
+                "description": "James: British English male voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-GB_JamesV3Voice.wav"
+              },
+              {
+                "id": "en-US_HenryV3Voice",
+                "lang": "english US",
+                "gender": "male",
+                "description": "Henry: American English male voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-US_HenryV3Voice.wav"
+              },
+              {
+                "id": "en-US_KevinV3Voice",
+                "lang": "english US",
+                "gender": "male",
+                "description": "Kevin: American English male voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-US_KevinV3Voice.wav"
+              },
+              {
+                "id": "fr-FR_ReneeV3Voice",
+                "lang": "french FR",
+                "gender": "female",
+                "description": "Renee: French (français) female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/fr-FR_ReneeV3Voice.wav"
+              },
+              {
+                "id": "en-US_MichaelV3Voice",
+                "lang": "english US",
+                "gender": "male",
+                "description": "Michael: American English male voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-US_MichaelV3Voice.wav"
+              },
+              {
+                "id": "fr-CA_LouiseV3Voice",
+                "lang": "french CA",
+                "gender": "female",
+                "description": "Louise: French Canadian female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/fr-CA_LouiseV3Voice.wav"
+              },
+              {
+                "id": "en-US_LisaV3Voice",
+                "lang": "english US",
+                "gender": "female",
+                "description": "Lisa: American English female voice.",
+                "sampleURL": "https://sn-faculty-authoring.s3.us-south.cloud-object-storage.appdomain.cloud/watson-tts-voices/en-US_LisaV3Voice.wav"
+              }
+            ],
+            "examples": [
+              {
+                "name": "List Voices",
+                "description": "",
+                "command": "curl -X GET 'https://sn-watson-tts.labs.skills.network/text-to-speech/api/v1/voices' | jq"
+              },
+              {
+                "name": "Convert text to example.wav",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-tts.labs.skills.network/text-to-speech/api/v1/synthesize?output=example.wav' --header 'Accept: audio/wav' --header 'Content-Type: application/json' -d '{ \"text\": \"Hello World\" }' --output example.wav"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=watson-text-speech-library-embed-home"
+          },
+          {
+            "id": "stt",
+            "name": "Speech-To-Text",
+            "category": "Speech-To-Text",
+            "enabled": true,
+            "description": "The IBM Watson™ Speech to Text service provides APIs that use IBM's speech-recognition capabilities to produce transcripts of spoken audio. The service can transcribe speech from various languages and audio formats. In addition to basic transcription, the service can produce detailed information about many different aspects of the audio. It returns all JSON response content in the UTF-8 character set.",
+            "hostname": "sn-watson-stt.labs.skills.network",
+            "image": "us.icr.io/sn-labassets/stt-standalone:latest",
+            "models": [
+              {
+                "id": "en-US_Multimedia",
+                "lang": "english"
+              },
+              {
+                "id": "fr-FR_Multimedia",
+                "lang": "french"
+              }
+            ],
+            "examples": [
+              {
+                "name": "List Models",
+                "description": "hello",
+                "command": "curl -X GET 'https://sn-watson-stt.labs.skills.network/speech-to-text/api/v1/models'"
+              },
+              {
+                "name": "Convert example.wav file to text",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-stt.labs.skills.network/speech-to-text/api/v1/recognize?model=en-US_Multimedia' --header 'Content-Type: audio/wav' --data-binary \"@./example.wav\" 2>/dev/null | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=watson-speech-text-library-embed-home"
+          },
+          {
+            "id": "sentiment-bert",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Sentiment - BERT",
+            "description": "The Sentiment models are pre-trained classification models for classifying the sentiment of the input text. It can predict the document sentiment, each sentence's sentiment, and each target's sentiment. Using the BERT Model.",
+            "hostname": "sn-watson-sentiment-bert.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-sentiment-bert.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/sentiment-bert-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "sentiment_aggregated-bert-workflow_lang_multi_stock",
+                "lang": "multi"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Sentiment Prediction",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-sentiment-bert.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/SentimentPredict' -H 'grpc-metadata-mm-model-id: sentiment_aggregated-bert-workflow_lang_multi_stock' -d '{ \"raw_document\": { \"text\": \"Does it matter to you that I am going mad?\" } }' | jq"
+              },
+              {
+                "name": "Complex Sentiment Prediction",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-sentiment-bert.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/SentimentPredict' -H 'grpc-metadata-mm-model-id: sentiment_aggregated-bert-workflow_lang_multi_stock' -d '{ \"rawDocument\": { \"text\": \"Hello I am feeling very happy! How about you?\" }, \"languageCode\": \"en\", \"documentSentiment\": false, \"targetPhrases\": [ \"hello\" ] }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-sentiment"
+          },
+          {
+            "id": "sentiment-cnn",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Sentiment - CNN",
+            "description": "The Sentiment models are pre-trained classification models for classifying the sentiment of the input text. It can predict the document sentiment, each sentence's sentiment, and each target's sentiment. Using the CNN Model.",
+            "hostname": "sn-watson-sentiment-cnn.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-sentiment-cnn.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/sentiment-cnn-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "sentiment_aggregated-cnn-workflow_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Sentiment Prediction",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-sentiment-cnn.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/SentimentPredict' -H 'grpc-metadata-mm-model-id: sentiment_aggregated-cnn-workflow_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"Does it matter to you that I am going mad?\" } }' | jq"
+              },
+              {
+                "name": "Complex Sentiment Prediction",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-sentiment-cnn.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/SentimentPredict' -H 'grpc-metadata-mm-model-id: sentiment_aggregated-cnn-workflow_lang_en_stock' -d '{ \"rawDocument\": { \"text\": \"Hello I am feeling very happy! How about you?\" }, \"languageCode\": \"en\", \"documentSentiment\": false, \"targetPhrases\": [ \"hello\" ] }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-sentiment"
+          },
+          {
+            "id": "categories",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Categories",
+            "description": "The categories task assigns to an input document individual nodes within a hierarchical taxonomy. This model differs from the classification model in that training starts from a set of seed phrases associated with each node in the taxonomy, and does not require labeled documents. The models have been tested on data from news reports and general web pages.",
+            "hostname": "sn-watson-categories.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-categories.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/categories-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "categories_esa-workflow_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Category Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-categories.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/CategoriesPredict' -H 'grpc-metadata-mm-model-id: categories_esa-workflow_lang_en_stock' -d '{\"rawDocument\": {\"text\": \"Hey how ya doin\" } }' | jq"
+              },
+              {
+                "name": "Complex Category Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-categories.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/CategoriesPredict' -H 'grpc-metadata-mm-model-id: categories_esa-workflow_lang_en_stock' -d '{\"rawDocument\": {\"text\": \"A solicitor from Loughborough is delighted when she gets the chance to take part in the final of Bake Off. However, her chances are scuppered when she finds out her arch rival is also going to compete. Unexpectedly, the solicitor is bitten by a zombie and therefore is disqualified from competing.\" }, \"explanation\": true, \"limit\": 2 }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-categories"
+          },
+          {
+            "id": "classification",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Classification",
+            "description": "The classification task encapsulates algorithms for document classification: classifying the input text into one or more of a pre-determined set of labels. \nThe task offers implementations of strong classification algorithms from three different families: classic ML, deep-learning and transformers. It supports multi-label and multi-class problems and its special cases: single-label, multi-class tasks and, respectively, binary classification tasks.",
+            "hostname": "sn-watson-classification.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-classification.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/classification-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "classification_ensemble-workflow_lang_en_tone-stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Classification Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-classification.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/ClassificationPredict' -H 'grpc-metadata-mm-model-id: classification_ensemble-workflow_lang_en_tone-stock' -d '{\"rawDocument\": {\"text\": \"I hate school. School is bad.\" } }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-classification"
+          },
+          {
+            "id": "concepts",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Concepts",
+            "description": "The Concepts task extracts general DBPedia concepts that are directly referenced or alluded to (but not directly referenced) in the input text. For example, in the text IBM announces new advances in quantum computing., a concept extracted may be http://dbpedia.org/resource/IBM, http://dbpedia.org/resource/Quantum_computing and http://dbpedia.org/resource/Qubit.",
+            "hostname": "sn-watson-concepts.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-concepts.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/concepts-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "concepts_alchemy-workflow_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Concepts Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-concepts.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/ConceptsPredict' -H 'Grpc-Metadata-mm-model-id: concepts_alchemy-workflow_lang_en_stock' -d '{\"rawDocument\": {\"text\": \"Hey how ya doin\" } }' | jq"
+              },
+              {
+                "name": "Complex Concepts Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-concepts.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/ConceptsPredict' -H 'Grpc-Metadata-mm-model-id: concepts_alchemy-workflow_lang_en_stock' -d '{\"rawDocument\": {\"text\": \"A solicitor from Loughborough is delighted when she gets the chance to take part in the final of Bake Off. However, her chances are scuppered when she finds out her arch rival is also going to compete. Unexpectedly, the solicitor is bitten by a zombie and therefore is disqualified from competing.\" }, \"explanation\": true, \"limit\": 2 }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-concepts"
+          },
+          {
+            "id": "detag",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Detag",
+            "description": "The Detag task enables you to process HTML text. This task removes HTML tags from the input text and retains the resulting plain text along with a character offset mapping that can be used to map from span offsets on plain text to span offsets in the original HTML text. Such functionality is desirable when you want to highlight extracted results on the original HTML text.",
+            "hostname": "sn-watson-detag.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-detag.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/detag-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "detag_rbr_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Detag Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-detag.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/DetagPredict' -H 'grpc-metadata-mm-model-id: detag_rbr_lang_en_stock'  -d '{\"rawDocument\": {\"text\": \"<html><body>The only text left</b></body></html>\" } }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-detag"
+          },
+          {
+            "id": "emotion",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Emotion",
+            "description": "Emotion models are pre-trained classification models for the task of classifying the emotion in the input document and the specified target words. For example, in the text, \"I'm so frustrated with this heavy traffic\". the model may predict anger and sadness as the most prevalent emotions overall, and also predict the targeted emotion for specific mentions, for example: frustrated would have anger as the most prevalent emotion. The Emotion model is trained using the Document classifier task. It requires a Syntax model to predict each sentence's emotion and aggregate the results to the final one. It is executed directly on the input text.",
+            "hostname": "sn-watson-emotion.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-emotion.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/emotion-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "emotion_aggregated-workflow_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Emotion Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict' -H 'grpc-metadata-mm-model-id: emotion_aggregated-workflow_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"I hate school. School is bad.\" } }' | jq"
+              },
+              {
+                "name": "Complex Emotion Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict' -H 'grpc-metadata-mm-model-id: emotion_aggregated-workflow_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"I hate school. School is bad.\" }, \"target_phrases\": [\"school\"], \"document_emotion\": false }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-emotion"
+          },
+          {
+            "id": "entity-mentions-bert",
+            "category": "Watson NLP",
+            "enabled": false,
+            "name": "Entity-mentions - BERT",
+            "description": "The entity-mentions task encapsulates algorithms for extracting mentions of entities (person, organizations, dates) from the input text. The task offers implementations of strong entity extraction algorithms from each of three families: rule-based, classic ML, and deep-learning. Using the BERT model.",
+            "hostname": "sn-watson-entity-mentions-bert.skills.network",
+            "grpcHostname": "grpc-sn-watson-entity-mentions-bert.skills.network:8085",
+            "image": "us.icr.io/sn-lab-assets/entity-mentions-bert-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "entity-mentions_bert-workflow_lang_multi_stock",
+                "lang": "multi"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Entity-mentions Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-entity-mentions-bert.skills.network/v1/watson.runtime.nlp.v1/NlpService/EntityMentionsPredict' -H 'grpc-metadata-mm-model-id: entity-mentions_bert-workflow_lang_multi_stock' -d '{ \"raw_document\": { \"text\": \"My email is john@ibm.com.\" } }' | jq"
+              },
+              {
+                "name": "Complex Entity-mentions Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-entity-mentions-bert.skills.network/v1/watson.runtime.nlp.v1/NlpService/EntityMentionsPredict' -H 'grpc-metadata-mm-model-id: entity-mentions_bert-workflow_lang_multi_stock' -d '{ \"raw_document\": { \"text\": \"My email is john@ibm.com.\" }, \"language_code\": \"en\" }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-entity-mentions"
+          },
+          {
+            "id": "keywords",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Keywords",
+            "description": "The keywords model ranks noun phrases extracted from an input document, based on how relevant they are within the document. For example, in the text: \"Anna went to school at University of California Santa Cruz. Anna joined the university in 2015.\". a Keywords model may decide that the noun phrases Anna and University of California Santa Cruz are more relevant than school and university.",
+            "hostname": "sn-watson-keywords.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-keywords.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/keywords-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "keywords_text-rank-workflow_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Keywords Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-keywords.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/KeywordsPredict' -H 'grpc-metadata-mm-model-id: keywords_text-rank-workflow_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"A solicitor from Loughborough is delighted when she gets the chance to take part in the final of Bake Off. However, her chances are scuppered when she finds out her arch rival is also going to compete. Unexpectedly, the solicitor is bitten by a zombie and therefore is disqualified from competing.\" } }' | jq"
+              },
+              {
+                "name": "Complex Keywords Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-keywords.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/KeywordsPredict' -H 'grpc-metadata-mm-model-id: keywords_text-rank-workflow_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"A solicitor from Loughborough is delighted when she gets the chance to take part in the final of Bake Off. However, her chances are scuppered when she finds out her arch rival is also going to compete. Unexpectedly, the solicitor is bitten by a zombie and therefore is disqualified from competing.\" }, \"limit\": 2 }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-keywords"
+          },
+          {
+            "id": "lang-detect",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Lang-detect",
+            "description": "The lang-detect model identifies the language of the input text.",
+            "hostname": "sn-watson-lang-detect.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-lang-detect.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/lang-detect-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "lang-detect_izumo_lang_multi_stock",
+                "lang": "multi"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Lang-detect Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-lang-detect.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/LangDetectPredict' -H 'grpc-metadata-mm-model-id: lang-detect_izumo_lang_multi_stock' -d '{ \"raw_document\": { \"text\": \"Hola, me llamo Javier. Me gusta dormir mucho pero no me gusta trabajar.\" } }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-lang-detect"
+          },
+          {
+            "id": "noun-phrases",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Noun-phrases",
+            "description": "The Noun Phrases model extracts non-overlapping noun phrases from the input text. For example, in the text: \"Anna went to school at University of California Santa Cruz\", the noun phrases extracted are: Anna, school, University of California Santa Cruz.",
+            "hostname": "sn-watson-noun-phrases.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-noun-phrases.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/noun-phrases-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "noun-phrases_rbr_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple None-phrases Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-noun-phrases.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/NounPhrasesPredict' -H 'grpc-metadata-mm-model-id: noun-phrases_rbr_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"Joe works at IBM. Joe lives in Denver, CO. Arvind Krishna is CEO and President of IBM. One dollar is equal to 100 cents. And is more than a UK pound. It is 12:00pm somewhere. On April 12th.\" } }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-noun-phrases"
+          },
+          {
+            "id": "relations-sire",
+            "category": "Watson NLP",
+            "enabled": false,
+            "name": "Relations - SIRE",
+            "description": "The relations model encapsulates algorithms for extracting relations between two entity mentions. For example, in the text: \"John Smith drives for Uber.\" a relation extraction model may decide that the entities John Smith and Uber are in a relationship with each other, and the relationship type is works for. Using the SIRE Model.",
+            "hostname": "sn-watson-relations-sire.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-relations-sire.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/relations-sire-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "relations_sire-workflow_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Relationships (SIRE) Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-relations-sire.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/RelationsPredict' -H 'grpc-metadata-mm-model-id: relations_sire-workflow_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"Joe works at IBM. Arvind Krishna is CEO and President of IBM.\" } }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-relations"
+          },
+          {
+            "id": "relations-transformer",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Relations - Transformer",
+            "description": "The relations model encapsulates algorithms for extracting relations between two entity mentions. For example, in the text: \"John Smith drives for Uber.\" a relation extraction model may decide that the entities John Smith and Uber are in a relationship with each other, and the relationship type is works for. Using the Transformer Model.",
+            "hostname": "sn-watson-relations-transformer.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-relations-transformer.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/relations-transformer-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "relations_transformer-workflow_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Relationships (Transformer) Example",
+                "description": "",
+                "command": "curl -X POST 'https://sn-watson-relations-transformer.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/RelationsPredict' -H 'grpc-metadata-mm-model-id: relations_transformer-workflow_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"Joe works at IBM. Arvind Krishna is CEO and President of IBM.\" } }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-relations"
+          },
+          {
+            "id": "syntax",
+            "category": "Watson NLP",
+            "enabled": true,
+            "name": "Syntax",
+            "description": "The Syntax model performs fundamental NLP tasks on the input text:\nSentence detection\nTokenization: can't -> ca + n't\nPart-of-Speech tagging: I thought -> I/PRON, thought/VERB\nLemmatization: I thought -> I/I, thought/think\\nDependency parsing: I -> nsubj -> thought -> root",
+            "hostname": "sn-watson-syntax.labs.skills.network",
+            "grpcHostname": "grpc-sn-watson-syntax.labs.skills.network:8085",
+            "image": "us.icr.io/sn-labassets/syntax-watson-nlp-runtime:latest",
+            "models": [
+              {
+                "id": "syntax_izumo_lang_en_stock",
+                "lang": "english"
+              }
+            ],
+            "examples": [
+              {
+                "name": "Simple Syntax Example",
+                "description": "hello",
+                "command": "curl -X POST 'https://sn-watson-syntax.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/SyntaxPredict' -H 'grpc-metadata-mm-model-id: syntax_izumo_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"This is a test sentence\" } }' | jq"
+              },
+              {
+                "name": "Complex Syntax Example",
+                "description": "hello",
+                "command": "curl -X POST 'https://sn-watson-syntax.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/SyntaxPredict' -H 'grpc-metadata-mm-model-id: syntax_izumo_lang_en_stock' -d '{ \"raw_document\": { \"text\": \"This is a test sentence\" }, \"parsers\": [\"tokens\", \"dependency\"] }' | jq"
+              }
+            ],
+            "apiDoc": "https://www.ibm.com/docs/en/watson-libraries?topic=catalog-syntax"
+          }
+      ],
+      "versions": {
+        "server": "na",
+        "web": "na",
+        "shell": "na"
+      },
+      "supportLink": "https://support.labs.cognitiveclass.ai/knowledgebase/articles/1976796-how-to-launch-mysql-postgresql-mongodb-cassandr"
+    }
+
+  }
+}

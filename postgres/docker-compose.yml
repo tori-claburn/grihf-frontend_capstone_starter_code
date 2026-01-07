@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  postgres:
+    read_only: true
+    image: postgres:13.2-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+  pgadmin:
+    # image: dpage/pgadmin4:4.30
+    image: 
+    ports:
+      - 5050:5050
+    environment:
+      # PGADMIN_DEFAULT_EMAIL: theia@skills.network
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
+      # PGADMIN_LISTEN_PORT: 5050
+  # nginx:
+  #   image: nginx
+  #   ports:
+  #     - 5051:80
+  #   volumes:
+  #     - "/home/project/postgres/nginx.conf:/etc/nginx/conf.d/default.conf"

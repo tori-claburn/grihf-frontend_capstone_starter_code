@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Cloud IDE</title>
+</head>
+
+<body>
+    <div class="theia-preload"><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        html,
+        body {
+            background-color: black;
+        }
+
+        .theia-preload {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Above styles copied from https://github.com/eclipse-theia/theia/blob/5aeef6c0c683b4e91713ab736957e6655b486adc/packages/core/src/browser/style/index.css#L147-L151 */
+            /* Otherwise, there is a flickering when Theia's CSS loads. */
+
+            background-image: none;
+        }
+
+        .theia-preload::after {
+            /* remove default loading animation */
+            content: none;
+        }
+
+        .spinner-container {
+            display: flex;
+            flex-direction: center;
+            align-self: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .custom-spinner {
+            align-self: center;
+        }
+
+        .custom-spinner svg {
+            width: 16vw;
+            height: 16vh;
+            animation-delay: 0;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: blueprint-spinner;
+            animation-timing-function: ease;
+        }
+
+        @keyframes blueprint-spinner {
+            0% {
+                filter:  brightness(113%) contrast(101%);
+                transform: scale(1.0);
+            }
+
+            50% {
+                filter:  brightness(50%) contrast(102%);
+                transform: scale(0.8);
+            }
+
+            100% {
+                filter:  brightness(113%) contrast(101%);
+                transform: scale(1.0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class='spinner-container'>
+        <div class='custom-spinner'>
+
+                <svg id="spinner" viewBox="0 0 329 329" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="164.775" cy="164.774" r="158.737" stroke="#F6F6F6" stroke-width="10.5047"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M170.028 283.129C168.287 283.205 166.536 283.243 164.776 283.243C99.3468 283.243 46.3063 230.203 46.3063 164.774C46.3063 99.345 99.3468 46.3045 164.776 46.3045C230.204 46.3045 283.245 99.345 283.245 164.774C283.245 221.178 243.828 268.375 191.037 280.322V291.072C249.674 278.943 293.75 227.005 293.75 164.774C293.75 93.5434 236.006 35.7998 164.776 35.7998C93.5453 35.7998 35.8016 93.5434 35.8016 164.774C35.8016 236.004 93.5453 293.748 164.776 293.748C166.535 293.748 168.286 293.713 170.028 293.643V283.129Z" fill="#A089FF"/>
+                    <line x1="164.775" y1="293.748" x2="164.775" y2="214.331" stroke="#A089FF" stroke-width="10.5047"/>
+                    <path d="M164.484 99.9951L164.484 136.198" stroke="#A089FF" stroke-width="7.58671"/>
+                    <circle cx="164.728" cy="91.1945" r="11.0883" transform="rotate(126 164.728 91.1945)" stroke="#A089FF" stroke-width="7.00311"/>
+                    <line x1="189.923" y1="126.226" x2="173.016" y2="143.129" stroke="#A089FF" stroke-width="7.58671"/>
+                    <line x1="164.484" y1="160.688" x2="164.484" y2="196.871" stroke="#A089FF" stroke-width="7.58671"/>
+                    <circle cx="164.776" cy="147.952" r="11.0883" transform="rotate(126 164.776 147.952)" stroke="#A089FF" stroke-width="7.00311"/>
+                    <circle cx="196.149" cy="120.374" r="11.0883" transform="rotate(126 196.149 120.374)" stroke="#F6F6F6" stroke-width="7.00311"/>
+                    <line y1="-3.79335" x2="23.9072" y2="-3.79335" transform="matrix(0.70719 0.707023 0.707023 -0.70719 142.31 123.542)" stroke="#A089FF" stroke-width="7.58671"/>
+                    <circle r="11.0883" transform="matrix(0.587786 0.809017 0.809017 -0.587786 133.402 120.373)" stroke="#A089FF" stroke-width="7.00311"/>
+                    <line x1="189.458" y1="183.325" x2="172.551" y2="200.228" stroke="#A089FF" stroke-width="7.58671"/>
+                    <line y1="-3.79335" x2="23.9072" y2="-3.79335" transform="matrix(0.70719 0.707023 0.707023 -0.70719 204.591 180.643)" stroke="#A089FF" stroke-width="7.58671"/>
+                    <circle r="11.0883" transform="matrix(0.587786 0.809017 0.809017 -0.587786 226.592 205.393)" stroke="#F6F6F6" stroke-width="7.00311"/>
+                    <line x1="220.367" y1="155.406" x2="203.46" y2="172.309" stroke="#A089FF" stroke-width="7.58671"/>
+                    <circle cx="195.684" cy="177.474" r="11.0883" transform="rotate(126 195.684 177.474)" stroke="#A089FF" stroke-width="7.00311"/>
+                    <circle cx="226.592" cy="149.555" r="11.0883" transform="rotate(126 226.592 149.555)" stroke="#A089FF" stroke-width="7.00311"/>
+                    <line y1="-3.79335" x2="23.9072" y2="-3.79335" transform="matrix(0.70719 0.707023 0.707023 -0.70719 142.775 180.643)" stroke="#A089FF" stroke-width="7.58671"/>
+                    <line x1="127.641" y1="183.325" x2="110.735" y2="200.228" stroke="#A089FF" stroke-width="7.58671"/>
+                    <circle cx="102.959" cy="205.393" r="11.0883" transform="rotate(126 102.959 205.393)" stroke="#A089FF" stroke-width="7.00311"/>
+                    <line y1="-3.79335" x2="23.9072" y2="-3.79335" transform="matrix(0.70719 0.707023 0.707023 -0.70719 111.866 152.724)" stroke="#A089FF" stroke-width="7.58671"/>
+                    <circle r="11.0883" transform="matrix(0.587786 0.809017 0.809017 -0.587786 133.867 177.474)" stroke="#F6F6F6" stroke-width="7.00311"/>
+                    <circle r="11.0883" transform="matrix(0.587786 0.809017 0.809017 -0.587786 102.958 149.555)" stroke="#A089FF" stroke-width="7.00311"/>
+                    <circle cx="164.776" cy="204.71" r="11.0883" transform="rotate(126 164.776 204.71)" stroke="#A089FF" stroke-width="7.00311"/>
+                </svg>
+
+        </div>
+    </div>
+</body>
+
+</html></div>
+    <script type="text/javascript" src="./bundle.js" charset="utf-8"></script>
+</body>
+
+</html>

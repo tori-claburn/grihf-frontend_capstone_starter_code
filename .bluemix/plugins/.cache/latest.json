@@ -1,0 +1,452 @@
+{
+  "LastUpdated": "2025-11-03T17:23:07.514894311-05:00",
+  "Success": true,
+  "RepositoryURL": "https://plugins.cloud.ibm.com",
+  "CLIVersion": "2.20.0",
+  "Plugins": [
+    {
+      "PluginName": [
+        "container-registry",
+        "cr"
+      ],
+      "Version": "1.3.16",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/1.3.16/container-registry-linux-amd64-1.3.16",
+      "Checksum": "5261fbbdad8ce57cea150fc025751af4bb8a7c7f3a431d6bc2cd420747977fd8",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "container-service",
+        "kubernetes-service",
+        "ks"
+      ],
+      "Version": "1.0.727",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-service/1.0.727/container-service-linux-amd64-1.0.727",
+      "Checksum": "65031ba3f6484b6c3110817954ea3a3b5b89416a4cf5d7bc88dcbaf4516b5270",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cloud-internet-services",
+        "cis"
+      ],
+      "Version": "1.18.1",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cloud-internet-services/1.18.1-2025-07-10-19-56-06-UTC/cloud-internet-services-linux-amd64-1.18.1",
+      "Checksum": "4154f5ff3e6b6cc6af06dc59c2b40188dc2e6eed99c89b7f262bb57bef7f8f48",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cloud-databases",
+        "cdb"
+      ],
+      "Version": "0.20.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cloud-databases/0.20.2/cloud-databases-linux-amd64-0.20.2",
+      "Checksum": "c41e4961f1065b2fff0ccd8c2269a75802953ef5270b1c26083eb725895a245e",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "key-protect",
+        "kp"
+      ],
+      "Version": "0.10.5",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/key-protect/0.10.5/key-protect-linux-amd64-0.10.5",
+      "Checksum": "5c390af4645ebbf19b021d1407d6fd250275b0b6aca9d36c75ce6943d3a1d8ad",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "doi",
+        "doi"
+      ],
+      "Version": "0.5.1",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/doi/0.5.1/doi-linux-amd64-0.5.1",
+      "Checksum": "d8746aa6751adcffedea198b26a43e2ac21e3fbd091511fa87e33632041c5f26",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "tke"
+      ],
+      "Version": "1.5.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/tke/1.5.2/tke-linux-amd64-1.5.2",
+      "Checksum": "3858ff51bf656a418ffea0ceb4b6714585c14a33ff1ffeec24c9eb3e0069d00e",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cloud-object-storage",
+        "cos"
+      ],
+      "Version": "1.10.3",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cloud-object-storage/1.10.3/cloud-object-storage-linux-amd64-1.10.3",
+      "Checksum": "cbf94a071cab5d3c292899e3f209c57007df1bf9c959c93ebe6485a05bd270ad",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "event-streams",
+        "es"
+      ],
+      "Version": "2.7.1",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/event-streams/2.7.1/event-streams-linux-amd64-2.7.1",
+      "Checksum": "edbf596060119f61ec2cdba15a29d84ca782afaad8ab70b8281b8aac65c5e31e",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "power-iaas",
+        "pi"
+      ],
+      "Version": "1.7.0",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/power-iaas/1.7.0/power-iaas-linux-amd64-1.7.0",
+      "Checksum": "51f21f42d89f4bc7586a4d27eedd78442d9636c5efbe34b607f58d70a6369bea",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "vpc-infrastructure",
+        "infrastructure-service",
+        "is"
+      ],
+      "Version": "15.0.0",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/vpc-infrastructure/15.0.0/vpc-infrastructure-linux-amd64-15.0.0",
+      "Checksum": "873d50542a77bf772ca24f6f2718857ac79ccd608a9fc7075662a50eb0ce697d",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "schematics",
+        "sch"
+      ],
+      "Version": "1.12.29",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/schematics/1.12.29/schematics-linux-amd64-1.12.29",
+      "Checksum": "c6faed87a3a004b4f9856bcd50bf5184f059627ee4751e1b5ce775567880b6f7",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cloud-dns-services",
+        "dns"
+      ],
+      "Version": "0.8.4",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cloud-dns-services/0.8.4/cloud-dns-services-linux-amd64-0.8.4",
+      "Checksum": "ed83147bb74ea82cb8f808d6b546b0674f9d595c5900479b80858c0d5d5fd403",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "dl-cli",
+        "dl"
+      ],
+      "Version": "0.5.11",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/dl-cli/0.5.11/dl-cli-linux-amd64-0.5.11",
+      "Checksum": "a8f784d71100011455fb9b58ebb3365677cdd2ea1344ea1e4576e71ede059934",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "catalogs-management"
+      ],
+      "Version": "2.5.7",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/catalogs-management/2.5.7/catalogs-management-linux-amd64-2.5.7",
+      "Checksum": "a463f87e52a56e681f99db5f7dc42cf23cb7cef6119546363dfe35e6ed8d7a1b",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "tg-cli",
+        "tg"
+      ],
+      "Version": "0.8.22",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/tg-cli/0.8.22/tg-cli-linux-amd64-0.8.22",
+      "Checksum": "187055349332fc0126200dccf11ca9bf5a1d6945bfb8c39cd4911116feeb7514",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "code-engine",
+        "ce"
+      ],
+      "Version": "1.55.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/code-engine/1.55.2/code-engine-linux-amd64-1.55.2",
+      "Checksum": "e59c5190b292ee5bbe89a8271871d213215db1c1ecd26f1c4140e579dcf55cd0",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "secrets-manager",
+        "sm"
+      ],
+      "Version": "2.0.12",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/secrets-manager/2.0.12/secrets-manager-linux-amd64-2.0.12",
+      "Checksum": "b025bfecb9d2cfa27f20f2a01311afaf2526784ccc675fd0950d863b843c16ce",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "app-configuration",
+        "ac"
+      ],
+      "Version": "1.0.14",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/app-configuration/1.0.14/app-configuration-linux-amd64-1.0.14",
+      "Checksum": "06bbf2cc7d8f3cb81858323f5f240a0d728f1316034c97b37dd94dfdac856571",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "monitoring"
+      ],
+      "Version": "0.2.16",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/monitoring/0.2.16/monitoring-linux-amd64-0.2.16",
+      "Checksum": "b8068a942ef2b97d043ab219707e127e1f49edaaaada8787dd79673d13c579a9",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cloudant",
+        "cl"
+      ],
+      "Version": "0.2.10",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cloudant/0.2.10/cloudant-linux-amd64-0.2.10",
+      "Checksum": "7e5d2ae3d7f6337193329366eb7a0f97c1a373e18a8c80ab10a62edaf9043de6",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "hpcs-cert-mgr",
+        "hpcs-cert-mgr"
+      ],
+      "Version": "1.1.0",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/hpcs-cert-mgr/1.1.0/hpcs-cert-mgr-linux-amd64-1.1.0",
+      "Checksum": "bf392f6c2f63af54beff7ee1cbb8973bb925d014810f7d06d8be86253655a221",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "atracker",
+        "at"
+      ],
+      "Version": "0.8.1",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/atracker/0.8.1/atracker-linux-amd64-0.8.1",
+      "Checksum": "25a3df798b3bf25eb2aa25d32090ec17387081b223aa5d43426543db7240d704",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "analytics-engine-v3",
+        "ae-v3"
+      ],
+      "Version": "2.5.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/analytics-engine-v3/2.5.2/analytics-engine-v3-linux-amd64-2.5.2",
+      "Checksum": "ac1ee801af5ccd59d47952476d5ab3bd85b21b77646d1503e2872ad303355109",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cra",
+        "cra"
+      ],
+      "Version": "2.6.0",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cra/2.6.0/cra-linux-amd64-2.6.0",
+      "Checksum": "45d5f872b6c40338b03b3120cea5a832b67cd5d1a733b9e3747a2d02622c2599",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "event-notifications",
+        "en"
+      ],
+      "Version": "1.19.0",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/event-notifications/1.19.0/event-notifications-linux-amd64-1.19.0",
+      "Checksum": "eaaf0799318261508b850413e5faf3a386872e6e50c723c957871d126986ced5",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "dvaas",
+        "watson-query"
+      ],
+      "Version": "1.0.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/dvaas/1.0.2/dvaas-linux-amd64-1.0.2",
+      "Checksum": "85c58bdc47df64551676140bd44e6f172d123aa1a915dbc124cb43a64c11e7eb",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "hpnet"
+      ],
+      "Version": "1.0.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/hpnet/1.0.2/hpnet-linux-amd64-1.0.2",
+      "Checksum": "02c9ed7cdf3c649049317838e006bd1f3102a78ea83b97ae03fb2ebe39d12afc",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "hpcs"
+      ],
+      "Version": "0.1.0",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/hpcs/0.1.0/hpcs-linux-amd64-0.1.0",
+      "Checksum": "6ccbeff8aafa7df5cc90d6068872de2920c2498a7cea324f64966dc314f17170",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cbr"
+      ],
+      "Version": "1.9.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cbr/1.9.2/cbr-linux-amd64-1.9.2",
+      "Checksum": "11cc69e10003ad2719fd5ba2793e127de83a399e23193b53867d7879b667a397",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "privileged-access-gateway",
+        "pag"
+      ],
+      "Version": "1.8.7",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/privileged-access-gateway/1.8.7/privileged-access-gateway-linux-amd64-1.8.7",
+      "Checksum": "677a00d2a8e5e3ae57a14aa75f35d447c4b8963d84270e3e3c00775a05856ef5",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "project"
+      ],
+      "Version": "0.0.49",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/project/0.0.49/project-linux-amd64-0.0.49",
+      "Checksum": "fb5fc18942df5050784c36e9cc7d679b637f493e7fcc5148e3910eec200623f1",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "metrics-router",
+        "mr"
+      ],
+      "Version": "0.0.56",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/metrics-router/0.0.56/metrics-router-linux-amd64-0.0.56",
+      "Checksum": "b395bf208878682a3b6f216e539b0b71301d42bd8fa8083a24cca6c10c05c834",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "openpages",
+        "op"
+      ],
+      "Version": "0.0.19",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/openpages/0.0.19/openpages-linux-amd64-0.0.19",
+      "Checksum": "ebe1ea0d65f4ad37fbc375d70acdcdd709872af8bac5512f658ea0aa4e5b7858",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "sl"
+      ],
+      "Version": "1.5.7",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/sl/1.5.7/sl-linux-amd64-1.5.7",
+      "Checksum": "ee8b9151fcf119e8c6fe952032d50afe380eb9c69e8c978b168f9aeacb8b098a",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "security-compliance",
+        "scc"
+      ],
+      "Version": "0.0.4",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/security-compliance/0.0.4/security-compliance-linux-amd64-0.0.4",
+      "Checksum": "925bca25007b8bcbaa95acbe02fb3b5cdd275ccae144aa62f7375da72525e0e7",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "data-product-hub",
+        "dph"
+      ],
+      "Version": "0.0.4",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/data-product-hub/0.0.4/data-product-hub-linux-amd64-0.0.4",
+      "Checksum": "b1ddba27081cf7471658e441899736ed88cd381903d11b2564340d7adbd66e8f",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "cloud-logs",
+        "logs"
+      ],
+      "Version": "0.3.0",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/cloud-logs/0.3.0/cloud-logs-linux-amd64-0.3.0",
+      "Checksum": "071a47f4312c18fd6f586490cd9d1e487080ee68286cdcecca3bde199a0aa148",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "ilab"
+      ],
+      "Version": "0.0.26",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/ilab/0.0.26/ilab-linux-amd64-0.0.26",
+      "Checksum": "79efeb39b9a1175ed6e09f2b33e86959ee2e878e550aaa92f1c9ea3a104feeef",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "backup-recovery",
+        "br"
+      ],
+      "Version": "1.0.2",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/backup-recovery/1.0.2/backup-recovery-linux-amd64-1.0.2",
+      "Checksum": "2f768e42c8abd9bb091a2c96b71ab4b97bce1fe6cd705d0947df81ab4660e2c7",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    },
+    {
+      "PluginName": [
+        "software-defined-storage",
+        "sds"
+      ],
+      "Version": "1.1.7",
+      "URL": "https://plugins.cloud.ibm.com/downloads/bluemix-plugins/software-defined-storage/1.1.7/software-defined-storage-linux-amd64-1.1.7",
+      "Checksum": "7c68b8284967c723e87331b7919121e398b9bb77615813e32148fd84f487fa71",
+      "ReleaseNotesLink": "",
+      "IsAlternate": false
+    }
+  ]
+}

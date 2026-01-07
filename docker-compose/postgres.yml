@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+
+  postgres:
+    image: postgres:13.2-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: pg_isready -h 127.0.0.1  -p 5432 -U postgres
+      start_period: 5s
+      interval: 5s
+      timeout: 60s
+      retries: 10
+    ports:
+      - 5432:5432
+    volumes:
+      - /home/project/postgres/data:/var/lib/postgresql/data:rw
+      - /home/project/postgres/passwd:/etc/passwd:ro
+    user: "1000:0"
+
+  pgadmin:
+    image:  us.icr.io/sn-labsassets/pgadmin-theia:latest
+    ports:
+      - 5050:5050
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: wget -q --spider http://127.0.0.1:5050/misc/ping
+      start_period: 5s
+      interval: 3s
+      timeout: 60s
+      retries: 10
+    depends_on:
+      postgres:
+        condition: service_healthy

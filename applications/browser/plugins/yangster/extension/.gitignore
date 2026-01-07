@@ -1,0 +1,6 @@
+node_modules/
+/server/
+/extension/lib/
+/extension/pack/
+yang-language-server.zip
+yarn-error.log

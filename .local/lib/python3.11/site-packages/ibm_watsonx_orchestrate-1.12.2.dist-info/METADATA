@@ -1,0 +1,37 @@
+Metadata-Version: 2.4
+Name: ibm-watsonx-orchestrate
+Version: 1.12.2
+Summary: IBM watsonx.orchestrate SDK
+Author-email: IBM <support@ibm.com>
+License: MIT License
+License-File: LICENSE
+Requires-Python: <3.14,>=3.11
+Requires-Dist: certifi>=2024.8.30
+Requires-Dist: click<8.2.0,>=8.0.0
+Requires-Dist: docstring-parser<1.0,>=0.16
+Requires-Dist: httpx<1.0.0,>=0.28.1
+Requires-Dist: ibm-cloud-sdk-core>=3.24.2
+Requires-Dist: ibm-watsonx-orchestrate-evaluation-framework==1.1.3
+Requires-Dist: jsonref==1.1.0
+Requires-Dist: langchain-core<=0.3.63
+Requires-Dist: langsmith<=0.3.45
+Requires-Dist: packaging>=24.2
+Requires-Dist: pydantic<3.0.0,>=2.10.3
+Requires-Dist: pyjwt<3.0.0,>=2.10.1
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: pytz>=2025.2
+Requires-Dist: pyyaml<7.0.0,>=6.0.2
+Requires-Dist: redis>=6.0.0
+Requires-Dist: requests>=2.32.0
+Requires-Dist: rich<14.0.0,>=13.9.4
+Requires-Dist: typer<1.0.0,>=0.15.1
+Requires-Dist: urllib3>=2.2.3
+Provides-Extra: dev
+Requires-Dist: black~=22.3.0; extra == 'dev'
+Requires-Dist: coverage[toml]>=6.5; extra == 'dev'
+Requires-Dist: pylint~=2.16.4; extra == 'dev'
+Requires-Dist: pytest-asyncio==0.25.1; extra == 'dev'
+Requires-Dist: pytest-cov==6.0.0; extra == 'dev'
+Requires-Dist: pytest-mock==3.14.0; extra == 'dev'
+Requires-Dist: pytest<9.0.0,>=8.3.4; extra == 'dev'
+Requires-Dist: snapshottest==1.0.0a1; extra == 'dev'

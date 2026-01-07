@@ -1,0 +1,20 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+Given a text response, generate keywords that capture the main information in the response. 
+Capture all specific information in the response.
+Only return a list starting with [ and ending with ].
+No extra commentary<|eot_id|>
+
+Here are some examples:
+<|start_header_id|>user<|end_header_id|>The effective start date of your latest dental plan is January 1, 2022.<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>["dental plan", "January 1, 2022"]<|eot_id|>
+<|start_header_id|>user<|end_header_id|>Your current compensation details are as follows:\n\n* Currency: NZD\n* Yearly base salary: $102,000.00<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>["compensation", "NZD", "$102,000.00"]<|eot_id|>
+<|start_header_id|>user<|end_header_id|>Your payslip details from January 1, 2018, to January 15, 2018, are as follows:\n\n* Start Date: January 1, 2018\n* End Date: January 15, 2018\n* Currency: USD\n* Wages:\n\t+ Gross: $2466.66\n\t+ Net Pay: $1712.75\n\t+ Taxes: $556.58\n\t+ Other (None): -$197.33\n\t+ Salary: $2466.66<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>["January 1, 2018", "January 15, 2018", "USD", "$2466.66", "$1712.75", "$556.58","-$197.33"]<|eot_id|>
+<|start_header_id|>user<|end_header_id|>I successfully updated your address.<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>[]<|eot_id|>
+<|start_header_id|>user<|end_header_id|>Here are the details for the user 108727:\n| field       | value\n|-------------|------------|\n| first name  | Merton     |\n| last name   | Wells      |\n| nationality | USA        |\n| gender      | M          |\n| country     | USA        |<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>["Merton", "Wells", "USA", "M"]<|eot_id|>
+
+<|start_header_id|>user<|end_header_id|>{{response}}<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>

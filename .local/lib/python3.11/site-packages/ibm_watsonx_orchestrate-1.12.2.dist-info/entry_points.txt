@@ -1,0 +1,2 @@
+[console_scripts]
+orchestrate = ibm_watsonx_orchestrate.cli.main:app

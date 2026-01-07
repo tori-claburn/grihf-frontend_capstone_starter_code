@@ -1,0 +1,565 @@
+{
+  "name": "cdt-gdb-vscode",
+  "version": "0.0.99",
+  "description": "VS Code extension for CDT GDB debug adapter",
+  "publisher": "eclipse-cdt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-cdt-cloud/cdt-gdb-vscode.git"
+  },
+  "author": "Eclipse CDT",
+  "license": "EPL-2.0",
+  "icon": "images/cdt_debug_logo.png",
+  "bugs": {
+    "url": "https://github.com/eclipse-cdt-cloud/cdt-gdb-vscode/issues"
+  },
+  "homepage": "https://github.com/eclipse-cdt-cloud/cdt-gdb-vscode#readme",
+  "main": "./out/extension",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "activationEvents": [
+    "onDebug",
+    "onCommand:cdt.gdb.memory.open",
+    "onCommand:cdt.debug.resumeAllSession",
+    "onCommand:cdt.debug.suspendAllSession"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "category": "GDB",
+        "title": "Open Memory Browser",
+        "command": "cdt.gdb.memory.open"
+      },
+      {
+        "command": "cdt.debug.resumeAllSession",
+        "title": "Resume All Sessions",
+        "icon": {
+          "light": "images/ResumeAll_Light.png",
+          "dark": "images/ResumeAll_Dark.png"
+        }
+      },
+      {
+        "command": "cdt.debug.suspendAllSession",
+        "title": "Suspend All Sessions",
+        "icon": {
+          "light": "images/SuspendAll_Light.png",
+          "dark": "images/SuspendAll_Dark.png"
+        }
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "c"
+      },
+      {
+        "language": "cpp"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "gdb",
+        "label": "GDB",
+        "program": "./node_modules/cdt-gdb-adapter/dist/debugAdapter.js",
+        "runtime": "node",
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "gdb": {
+                "type": "string",
+                "description": "Path to gdb",
+                "default": "gdb"
+              },
+              "program": {
+                "type": "string",
+                "description": "Path to the program to be launched",
+                "default": "${workspaceFolder}/${command:askProgramPath}"
+              },
+              "arguments": {
+                "type": "string",
+                "description": "Arguments for the program"
+              },
+              "gdbAsync": {
+                "type": "boolean",
+                "description": "Use mi-async mode for communication with GDB. (defaults to true, always true when gdbNonStop is true)",
+                "default": true
+              },
+              "gdbNonStop": {
+                "type": "boolean",
+                "description": "Use non-stop mode for controlling multiple threads. (defaults to false)",
+                "default": false
+              },
+              "verbose": {
+                "type": "boolean",
+                "description": "Produce verbose log output",
+                "default": false
+              },
+              "logFile": {
+                "type": "string",
+                "description": "Absolute path to the file to log interaction with gdb"
+              },
+              "openGdbConsole": {
+                "type": "boolean",
+                "description": "(UNIX-only) Open a GDB console in your IDE while debugging"
+              },
+              "initCommands": {
+                "type": "array",
+                "description": "List of GDB commands sent before starting inferior.",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              }
+            }
+          },
+          "attach": {
+            "required": [
+              "program",
+              "processId"
+            ],
+            "properties": {
+              "gdb": {
+                "type": "string",
+                "description": "Path to gdb",
+                "default": "gdb"
+              },
+              "program": {
+                "type": "string",
+                "description": "Path to the program to be debugged",
+                "default": "${workspaceFolder}/${command:askProgramPath}"
+              },
+              "processId": {
+                "type": "string",
+                "description": "Process ID to attach to",
+                "default": "${command:askProcessId}"
+              },
+              "gdbAsync": {
+                "type": "boolean",
+                "description": "Use mi-async mode for communication with GDB. (defaults to true, always true when gdbNonStop is true)",
+                "default": true
+              },
+              "gdbNonStop": {
+                "type": "boolean",
+                "description": "Use non-stop mode for controlling multiple threads. (defaults to false)",
+                "default": false
+              },
+              "verbose": {
+                "type": "boolean",
+                "description": "Produce verbose log output",
+                "default": false
+              },
+              "logFile": {
+                "type": "string",
+                "description": "Absolute path to the file to log interaction with gdb"
+              },
+              "openGdbConsole": {
+                "type": "boolean",
+                "description": "(UNIX-only) Open a GDB console in your IDE while debugging"
+              },
+              "initCommands": {
+                "type": "array",
+                "description": "List of GDB commands sent before attaching to inferior.",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              }
+            }
+          }
+        },
+        "variables": {
+          "askProgramPath": "cdt.debug.askProgramPath",
+          "askProcessId": "cdt.debug.askProcessId"
+        },
+        "initialConfigurations": [
+          {
+            "type": "gdb",
+            "request": "launch",
+            "name": "gdb launch",
+            "program": "${workspaceFolder}/${command:askProgramPath}"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "GDB CDT Local debugging",
+            "description": "A new configuration for local debugging using GDB.",
+            "body": {
+              "type": "gdb",
+              "request": "launch",
+              "name": "Name here",
+              "program": "^\"\\${workspaceFolder}/\\${command:askProgramPath}\""
+            }
+          }
+        ]
+      },
+      {
+        "type": "gdbtarget",
+        "label": "GDB Target",
+        "program": "./node_modules/cdt-gdb-adapter/dist/debugTargetAdapter.js",
+        "runtime": "node",
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "gdb": {
+                "type": "string",
+                "description": "Path to gdb",
+                "default": "gdb"
+              },
+              "program": {
+                "type": "string",
+                "description": "Path to the program to be launched",
+                "default": "${workspaceFolder}/${command:askProgramPath}"
+              },
+              "gdbAsync": {
+                "type": "boolean",
+                "description": "Use mi-async mode for communication with GDB. (defaults to true, always true when gdbNonStop is true)",
+                "default": true
+              },
+              "gdbNonStop": {
+                "type": "boolean",
+                "description": "Use non-stop mode for controlling multiple threads. (defaults to false)",
+                "default": false
+              },
+              "verbose": {
+                "type": "boolean",
+                "description": "Produce verbose log output",
+                "default": false
+              },
+              "logFile": {
+                "type": "string",
+                "description": "Absolute path to the file to log interaction with gdb"
+              },
+              "openGdbConsole": {
+                "type": "boolean",
+                "description": "(UNIX-only) Open a GDB console in your IDE while debugging"
+              },
+              "initCommands": {
+                "type": "array",
+                "description": "List of GDB commands sent after attaching to target before loading image on target.",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              },
+              "preRunCommands": {
+                "type": "array",
+                "description": "List of GDB commands sent after loading image on target before resuming target.",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              },
+              "imageAndSymbols": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                  "symbolFileName": {
+                    "type": "string",
+                    "description": "If specified, a symbol file to load at the given (optional) offset",
+                    "default": ""
+                  },
+                  "symbolOffset": {
+                    "type": "string",
+                    "description": "If symbolFileName is specified, the offset used to load",
+                    "default": ""
+                  },
+                  "imageFileName": {
+                    "type": "string",
+                    "description": "If specified, an image file to load at the given (optional) offset",
+                    "default": ""
+                  },
+                  "imageOffset": {
+                    "type": "string",
+                    "description": "If imageFileName is specified, the offset used to load",
+                    "default": ""
+                  }
+                }
+              },
+              "target": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The kind of target debugging to do. This is passed to -target-select (defaults to remote)",
+                    "default": "remote"
+                  },
+                  "parameters": {
+                    "type": "array",
+                    "description": "Target parameters for the type of target. Normally something like localhost:12345. (defaults to `${host}:${port}`)",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  },
+                  "host": {
+                    "type": "string",
+                    "description": "Target host to connect to (defaults to 'localhost', ignored if parameters is set)",
+                    "default": "localhost"
+                  },
+                  "port": {
+                    "type": "string",
+                    "description": "Target port to connect to (defaults to value captured by serverPortRegExp, ignored if parameters is set)",
+                    "default": "2331"
+                  },
+                  "cwd": {
+                    "type": "string",
+                    "description": "Specifies the working directory of server (defaults to the working directory of gdb)",
+                    "default": ""
+                  },
+                  "server": {
+                    "type": "string",
+                    "description": "The executable for the target server to launch (e.g. gdbserver or JLinkGDBServerCLExe) (defaults to gdbserver)",
+                    "default": "gdbserver"
+                  },
+                  "serverParameters": {
+                    "type": "array",
+                    "description": "Command line arguments passed to server (defaults to --once :0 ${args.program}).",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  },
+                  "serverPortRegExp": {
+                    "type": "string",
+                    "description": "Regular expression to extract port from by examinging stdout/err of server. Once server is launched, port will be set to this if port is not set. Defaults to matching a string like 'Listening on port 41551' which is what gdbserver provides. Ignored if port or parameters is set",
+                    "default": ""
+                  },
+                  "serverStartupDelay": {
+                    "type": "number",
+                    "description": "Delay after startup before continuing launch, in milliseconds. If serverPortRegExp is provided, it is the delay after that regexp is seen.",
+                    "default": "0"
+                  },
+                  "automaticallyKillServer": {
+                    "type": "boolean",
+                    "description": "Automatically kill the launched server when client issues a disconnect (default: true)"
+                  }
+                }
+              }
+            }
+          },
+          "attach": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "gdb": {
+                "type": "string",
+                "description": "Path to gdb",
+                "default": "gdb"
+              },
+              "program": {
+                "type": "string",
+                "description": "Path to the program to be debugged",
+                "default": "${workspaceFolder}/${command:askProgramPath}"
+              },
+              "gdbAsync": {
+                "type": "boolean",
+                "description": "Use mi-async mode for communication with GDB. (defaults to true, always true when gdbNonStop is true)",
+                "default": true
+              },
+              "gdbNonStop": {
+                "type": "boolean",
+                "description": "Use non-stop mode for controlling multiple threads. (defaults to false)",
+                "default": false
+              },
+              "verbose": {
+                "type": "boolean",
+                "description": "Produce verbose log output",
+                "default": false
+              },
+              "logFile": {
+                "type": "string",
+                "description": "Absolute path to the file to log interaction with gdb"
+              },
+              "openGdbConsole": {
+                "type": "boolean",
+                "description": "(UNIX-only) Open a GDB console in your IDE while debugging"
+              },
+              "initCommands": {
+                "type": "array",
+                "description": "List of GDB commands sent after attaching to target before loading image on target.",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              },
+              "preRunCommands": {
+                "type": "array",
+                "description": "List of GDB commands sent after loading image on target before resuming target.",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              },
+              "imageAndSymbols": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                  "symbolFileName": {
+                    "type": "string",
+                    "description": "If specified, a symbol file to load at the given (optional) offset",
+                    "default": ""
+                  },
+                  "symbolOffset": {
+                    "type": "string",
+                    "description": "If symbolFileName is specified, the offset used to load",
+                    "default": ""
+                  },
+                  "imageFileName": {
+                    "type": "string",
+                    "description": "If specified, an image file to load at the given (optional) offset",
+                    "default": ""
+                  },
+                  "imageOffset": {
+                    "type": "string",
+                    "description": "If imageFileName is specified, the offset used to load",
+                    "default": ""
+                  }
+                }
+              },
+              "target": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The kind of target debugging to do. This is passed to -target-select (defaults to remote)",
+                    "default": "remote"
+                  },
+                  "parameters": {
+                    "type": "array",
+                    "description": "Target parameters for the type of target. Normally something like localhost:12345. (defaults to `${host}:${port}`)",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  },
+                  "host": {
+                    "type": "string",
+                    "description": "Target host to connect to (defaults to 'localhost', ignored if parameters is set)",
+                    "default": "localhost"
+                  },
+                  "port": {
+                    "type": "string",
+                    "description": "Target port to connect to (defaults to value captured by serverPortRegExp, ignored if parameters is set)",
+                    "default": "2331"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "variables": {
+          "askProgramPath": "cdt.debug.askProgramPath"
+        },
+        "initialConfigurations": [
+          {
+            "type": "gdbtarget",
+            "request": "attach",
+            "name": "gdb remote attach",
+            "program": "${workspaceFolder}/${command:askProgramPath}"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "GDB CDT Remote debugging - automatic launching of gdbserver",
+            "description": "A new configuration for remote debugging using GDB with launching of gdbserver.",
+            "body": {
+              "type": "gdbtarget",
+              "request": "launch",
+              "name": "Name here",
+              "program": "^\"\\${workspaceFolder}/\\${command:askProgramPath}\""
+            }
+          },
+          {
+            "label": "GDB CDT Remote debugging",
+            "description": "A new configuration for remote debugging using GDB.",
+            "body": {
+              "type": "gdbtarget",
+              "request": "attach",
+              "name": "Name here",
+              "program": "^\"\\${workspaceFolder}/\\${command:askProgramPath}\""
+            }
+          }
+        ]
+      }
+    ],
+    "menus": {
+      "debug/toolBar": [
+        {
+          "command": "cdt.debug.resumeAllSession",
+          "group": "navigation",
+          "when": "debugType == amalgamator"
+        },
+        {
+          "command": "cdt.debug.suspendAllSession",
+          "group": "navigation",
+          "when": "debugType == amalgamator"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build:tsc": "tsc",
+    "watch:tsc": "tsc -w",
+    "build:webpack": "webpack --mode production",
+    "watch:webpack": "webpack --watch",
+    "build": "run-s build:*",
+    "watch": "run-p watch:*",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write .",
+    "format-check": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vscode:prepublish": "npm run build",
+    "vsce:package": "vsce package"
+  },
+  "dependencies": {
+    "cdt-amalgamator": "^0.0.11",
+    "cdt-gdb-adapter": "^0.0.23",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^14.18.17",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "@vscode/vsce": "^2.18.0",
+    "chai": "^4.3.7",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.35.0",
+    "event-stream": "^4.0.1",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.8.4",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "bundledDependencies": [
+    "cdt-gdb-adapter"
+  ],
+  "files": [
+    "NOTICE",
+    "LICENSE",
+    "README.md",
+    "CONTRIBUTING.md",
+    "out/**/*.js",
+    "out/**/*.js.map",
+    "out/**/*.d.ts"
+  ]
+}

@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+
+  mongo:
+    image: mongo:3.6.3
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    command: mongod --config /etc/mongo/mongod.conf
+    volumes:
+      - /home/project/mongo:/etc/mongo
+
+  mongo-express:
+    image: mongo-express:0.54.0
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+    healthcheck:
+      test: wget -q --spider http://127.0.0.1:8081
+      start_period: 5s
+      interval: 3s
+      timeout: 60s
+      retries: 10
+    depends_on:
+      mongo:
+        condition: service_healthy

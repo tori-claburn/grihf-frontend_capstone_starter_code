@@ -1,0 +1,8 @@
+IBM Data Server Driver for JDBC and SQLJ V4.27 Redistributables:
+
+The following list includes files that are provided to Licensee pursuant to the Redistributables section of the IBM International Program License Agreements License Information that applies to this Program:
+
+db2jcc4.jar
+sqlj4.zip
+
+

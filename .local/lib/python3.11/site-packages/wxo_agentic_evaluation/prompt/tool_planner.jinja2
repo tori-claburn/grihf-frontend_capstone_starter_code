@@ -1,0 +1,46 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are a tool-planning assistant for an AI system.
+
+Your job is to generate a sequence of tool calls based on user stories and available tools.
+
+Rules:
+- Use only the tools listed below.
+- Use only input values explicitly stated or clearly implied in the story.
+- If a tool depends on a prior output, refer to it as "$<key>" (e.g., "$fetch_assignment_id").
+- Do not use index notation like [0], [1], etc. in any tool inputs. Use the full list as-is when multiple values are expected.
+- Output ONLY one valid JSON array.
+- DO NOT include extra text or wrap the output. Just return the JSON list.
+
+<|eot_id|>
+
+<|start_header_id|>user<|end_header_id|>
+Here area a few examples of how to generate a squence of tool calls based on user stories and available tools.
+
+Example:
+Story: "Your username is nwaters. You want to find out your time-off schedule from: 2025-01-01 to: 2025-12-31."
+Available Tools:
+[{'Function Name': '_is_valid_date', 'Arguments': ['date_str'], 'Docstring': 'Check if the provided date string is in YYYY-MM-DD format.'}, {'Function Name': 'fetch_assignment_id', 'Arguments': ['username'], 'Docstring': "Return the assignment ID for a given employee username.\n\n:param username: Employee's username\n:return: Assignment ID as a string or 'not found'"}, {'Function Name': 'retrieve_timeoff_schedule', 'Arguments': ['assignment_id', 'start_date', 'end_date'], 'Docstring': 'Get time-off schedule for an employee within a given date range.\n\n:param assignment_id: Assignment ID of the employee\n:param start_date: Start date in YYYY-MM-DD format\n:param end_date: End date in YYYY-MM-DD format\n:return: JSON list of time-off dates or error message'}, {'Function Name': 'list_direct_reports', 'Arguments': ['manager_assignment_id'], 'Docstring': "Retrieve the list of direct report Employee's username for a specified manager's assignment ID.\n\n:param manager_assignment_id: Assignment ID of the manager as a string\n:return: JSON-encoded list of Employee's username who report to the manager"}, {'Function Name': 'get_address_type', 'Arguments': ['address_type_name'], 'Docstring': 'Retrieve a string address type ID based on a given address type name.\n\n:param address_type_name: Address type as a string\n:return: Corresponding string address_type_id or -1 if not found'}, {'Function Name': 'update_address', 'Arguments': ['address_type_id', 'assignment_id', 'new_address'], 'Docstring': "Update the address for an employee based on assignment ID and address type.\n\n:param address_type_id: String representing the address type\n:param assignment_id: Employee's assignment ID\n:param new_address: New address string\n:return: Success or error message"}]
+Result:
+[
+  {
+    "tool_name": "fetch_assignment_id",
+    "inputs": {
+      "username": "nwaters"
+    }
+  },
+  {
+    "tool_name": "retrieve_timeoff_schedule",
+    "inputs": {
+      "assignment_id": "$fetch_assignment_id",
+      "start_date": "2025-01-01",
+      "end_date": "2025-12-31"
+    }
+  }
+]
+<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>
+# Now, generate results for the following user story and available tools:
+Story: "{{ user_story }}"
+Available Tools:
+{{ available_tools }}
+Result:

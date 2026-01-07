@@ -1,0 +1,34 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+Your task is to generate a modified version of an original starting sentence, and an original story.
+
+## Generation Guidelines
+The modfied story is a simplified version of the original story that only focuses on the user data. 
+Only keep the user data (like email, phone number, etc.) from the original story to create the modified story. No need to keep other parts of the story.
+Make the modified starting sentence a simple greeting and a mention of the user data.
+Each generation should be a JSON object with the following fields:
+- modified_starting_sentence: The modified starting sentence.
+- modified_story: The modified story.
+Only return a JSON and nothing else. No explanations or commentary.
+
+The final output should be a list of the generated JSON objects.
+Use the following format:
+[
+  {
+    "modified_starting_sentence": "<modified starting sentence>",
+    "modified_story": "<modified story>",
+  },
+  ...
+]
+<|eot_id|>
+
+<|start_header_id|>user<|end_header_id|>
+original starting sentence: 
+{{ original_starting_sentence }}
+
+original story: 
+{{ original_story }}
+
+Given the above guidelines and the provided information, generate a list data in JSON format.
+<|eot_id|>
+
+<|start_header_id|>assistant<|end_header_id|>

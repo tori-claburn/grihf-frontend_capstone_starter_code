@@ -1,0 +1,159 @@
+{
+    "name": "yang-vscode",
+    "displayName": "Yangster",
+    "description": "Yang editor support and diagrams for VS Code",
+    "version": "2.2.0",
+    "publisher": "typefox",
+    "license": "Apache-2.0",
+    "icon": "images/yin_yang.png",
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "yang",
+        "diagram",
+        "modeling",
+        "network",
+        "netconf"
+    ],
+    "files": [
+        "extension",
+        "server",
+        "syntaxes",
+        "webview"
+    ],
+    "main": "./extension/pack/extension",
+    "activationEvents": [
+        "onLanguage:yang",
+        "onCommand:yang.diagram.open"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "yang",
+                "aliases": [
+                    "Yang",
+                    "yang"
+                ],
+                "extensions": [
+                    ".yang"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "yang",
+                "scopeName": "source.yang",
+                "path": "./syntaxes/yang.tmLanguage.json"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Yang client configuration",
+            "properties": {
+                "yangLanguageServer.maxNumberOfProblems": {
+                    "type": "number",
+                    "default": 100,
+                    "description": "Controls the maximum number of problems produced by the server."
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "yang.diagram.open",
+                "title": "Open in Diagram",
+                "category": "Yang Diagram"
+            },
+            {
+                "command": "yang.diagram.fit",
+                "title": "Fit to Screen",
+                "category": "Yang Diagram"
+            },
+            {
+                "command": "yang.diagram.center",
+                "title": "Center Selection",
+                "category": "Yang Diagram"
+            },
+            {
+                "command": "yang.diagram.export",
+                "title": "Export Diagram to SVG",
+                "category": "Yang Diagram"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "editorLangId==yang",
+                    "command": "yang.diagram.open",
+                    "group": "navigation"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "when": "resourceExtname == '.yang'",
+                    "command": "yang.diagram.open",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "key": "alt+f",
+                "mac": "alt+f",
+                "command": "yang.diagram.fit",
+                "when": "yang-diagram-focused"
+            },
+            {
+                "key": "alt+c",
+                "mac": "alt+c",
+                "command": "yang.diagram.center",
+                "when": "yang-diagram-focused"
+            },
+            {
+                "key": "alt+e",
+                "mac": "alt+e",
+                "command": "yang.diagram.export",
+                "when": "yang-diagram-focused"
+            }
+        ]
+    },
+    "dependencies": {
+        "sprotty-vscode": "0.3.1",
+        "vscode-languageclient": "^7.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^10.17.16",
+        "@types/vscode": "1.22.0",
+        "reflect-metadata": "^0.1.13",
+        "ts-loader": "^6.2.2",
+        "tslint": "^6.1.3",
+        "typescript": "^3.8.3",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11"
+    },
+    "scripts": {
+        "prepare": "yarn --cwd webview && yarn install:languageserver",
+        "install:languageserver": "rm -rf ./server && yarn download:languageserver && unzip yang-language-server.zip && mv yang-language-server-0.7.0 server",
+        "download:languageserver": "curl -L -o yang-language-server.zip https://github.com/theia-ide/yang-lsp/releases/download/v0.7.0/yang-language-server_diagram-extension_0.7.0.zip",
+        "vscode:prepublish": "yarn clean && yarn lint && webpack --mode=production && yarn --cwd webview vscode:prepublish",
+        "clean": "rm -rf ./extension/lib ./extension/pack",
+        "build": "webpack --mode=development && yarn lint",
+        "watch": "webpack --mode=development --watch",
+        "lint": "tslint -c ./tslint.json --project ./tsconfig.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/theia-ide/yang-vscode.git"
+    },
+    "bugs": {
+        "url": "https://github.com/theia-ide/yang-vscode/issues"
+    },
+    "galleryBanner": {
+        "color": "#1d1d1d",
+        "theme": "dark"
+    }
+}

@@ -1,0 +1,45 @@
+- 
+- 'installDSDriver' script has started ...
+- 
+- Unzipping and Copying each driver files to install path ...
+-   clpplus/bin files are copied to /home/theia/dsdriver/bin
+-   clpplus/tools files are copied to /home/theia/dsdriver/tools
+-   jdbc_sqlj_driver/linuxamd64 files are copied to /home/theia/dsdriver/java/linuxamd64
+-   Performing 'unzip -o -q db2_db2driver_for_jdbc_sqlj.zip' ...
+-   Performing 'gunzip ibm_data_server_driver_for_odbc_cli.tar.gz' ...
+-   odbc_cli_driver/linuxamd64/adm files are copied to /home/theia/dsdriver/adm
+-   odbc_cli_driver/linuxamd64/bin/db2cli files are copied to /home/theia/dsdriver/bin/db2cli
+-   odbc_cli_driver/linuxamd64/bin/db2diag files are copied to /home/theia/dsdriver/bin/db2diag
+-   odbc_cli_driver/linuxamd64/bin/db2dsdcfgfill files are copied to /home/theia/dsdriver/bin/db2dsdcfgfill
+-   odbc_cli_driver/linuxamd64/bin/db2ldcfg files are copied to /home/theia/dsdriver/bin/db2ldcfg
+-   odbc_cli_driver/linuxamd64/bin/db2lddrg files are copied to /home/theia/dsdriver/bin/db2lddrg
+-   odbc_cli_driver/linuxamd64/bin/db2level files are copied to /home/theia/dsdriver/bin/db2level
+-   odbc_cli_driver/linuxamd64/bin/db2support files are copied to /home/theia/dsdriver/bin/db2support
+-   odbc_cli_driver/linuxamd64/bnd files are copied to /home/theia/dsdriver/bnd
+-   odbc_cli_driver/linuxamd64/cfg files are copied to /home/theia/dsdriver/cfg
+-   odbc_cli_driver/linuxamd64/cfgcache files are copied to /home/theia/dsdriver/cfgcache
+-   odbc_cli_driver/linuxamd64/conv files are copied to /home/theia/dsdriver/conv
+-   odbc_cli_driver/linuxamd64/db2dump files are copied to /home/theia/dsdriver/db2dump
+-   odbc_cli_driver/linuxamd64/include files are copied to /home/theia/dsdriver/include
+-   odbc_cli_driver/linuxamd64/lib files are copied to /home/theia/dsdriver/lib
+-   odbc_cli_driver/linuxamd64/license/UNIX files are copied to /home/theia/dsdriver/license/UNIX
+-   odbc_cli_driver/linuxamd64/license/odbc_REDIST.txt files are copied to /home/theia/dsdriver/license/odbc_REDIST.txt
+-   odbc_cli_driver/linuxamd64/license/odbc_notices.txt files are copied to /home/theia/dsdriver/license/odbc_notices.txt
+-   odbc_cli_driver/linuxamd64/msg files are copied to /home/theia/dsdriver/msg
+-   Performing 'gunzip ibm_data_server_driver_for_odbc_cli_32.tar.gz' ...
+-   odbc_cli_driver/linuxia32/lib32 files are copied to /home/theia/dsdriver/msg
+-   odbc_cli_driver/linuxia32/bin32 files are copied to /home/theia/dsdriver/msg
+-   odbc_cli_driver/linuxia32/adm32 files are copied to /home/theia/dsdriver/msg
+-   --> SUCCESS
+- Generating db2profile & db2cshrc files ...
+- Generating db2profile32 & db2cshrc32 files ...
+-   --> SUCCESS
+- Performing post-installation clean up ...
+-   Removed directory: clpplus
+-   Removed directory: jdbc_sqlj_driver
+-   Removed directory: odbc_cli_driver
+-   --> SUCCESS
+- 
+- 'installDSDriver' completed successfully.
+- Check /home/theia/dsdriver/installDSDriver.log file for complete details.
+- 

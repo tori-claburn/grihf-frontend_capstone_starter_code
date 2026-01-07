@@ -1,0 +1,154 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+Your task is to generate a user story based on the provided information, focusing solely on the user's end goal and the essential context. Write a clear, concise narrative that:
+
+- Centers on the user's primary objective and the key actions they take to achieve it.
+- Includes only information directly relevant to understanding the user's goals and context.
+- Excludes intermediate steps or process details that do not directly impact the user's outcome.
+- Avoids repetition and omits any duplicate or unnecessary details.
+- Captures the essence of the user's intent and required actions without commentary or extraneous explanation.
+
+The final story should be brief, direct, and goal-oriented.
+<|eot_id|>
+
+<|start_header_id|>user<|end_header_id|>
+Here area a few examples of how to generate a user story based on the provided input data:
+# Example 1:
+Input data:
+{
+  "agent": "workday_employee_support_manager",
+  "goals": {
+    "get_user_workday_ids": [
+      "get_payslips"
+    ],
+    "get_payslips": [
+      "summarize"
+    ]
+  },
+  "goal_details": [
+    {
+      "type": "tool_call",
+      "name": "get_user_workday_ids",
+      "tool_name": "get_user_workday_ids",
+      "args": {
+        "email": "abrennan@workday.net"
+      }
+    },
+    {
+      "type": "tool_call",
+      "name": "get_payslips",
+      "tool_name": "get_payslips",
+      "args": {
+        "user_id": "6dcb8106e8b74b5aabb1fc3ab8ef2b92"
+      }
+    },
+    {
+      "type": "text",
+      "name": "summarize",
+      "response": "No payslips found for user with ID 6dcb8106e8b74b5aabb1fc3ab8ef2b92.",
+      "keywords": [
+        "payslips"
+      ]
+    }
+  ],
+  "story": "",
+  "starting_sentence": "I work at Workday, I want to get my payslips. My email id is abrennan@workday.net"
+}
+Story: Your email id is abrennan@workday.net. You want to get your payslips
+
+# Example 2:
+Input data:
+{
+  "agent": "servicenow_asset_management_agent",
+  "goals": {
+    "get_assets": [
+      "update_an_asset"
+    ],
+    "update_an_asset": [
+      "summarize"
+    ]
+  },
+  "goal_details": [
+    {
+      "type": "tool_call",
+      "name": "get_assets",
+      "tool_name": "get_assets",
+      "args": {}
+    },
+    {
+      "type": "tool_call",
+      "name": "update_an_asset",
+      "tool_name": "update_an_asset",
+      "args": {
+        "args": {
+          "current_name": "A100",
+          "new_name": "Macbook"
+        }
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "The asset A100 has been updated to Macbook.",
+      "keywords": [
+        "A100",
+        "Macbook"
+      ]
+    }
+  ],
+  "story": "",
+  "starting_sentence": "I want to update an asset"
+}
+Story: You want to update an asset. The current asset name is A100. You want to update it to Macbook.
+
+# Example 3:
+Input data:
+{
+  "agent": "sales_research",
+  "goals": {
+    "search_company_by_typeahead": [
+      "get_news_and_media"
+    ],
+    "get_news_and_media": [
+      "summarize"
+    ]
+  },
+  "goal_details": [
+    {
+      "type": "tool_call",
+      "name": "search_company_by_typeahead",
+      "tool_name": "search_company_by_typeahead",
+      "args": {
+        "query": "tech"
+      }
+    },
+    {
+      "type": "tool_call",
+      "name": "get_news_and_media",
+      "tool_name": "get_news_and_media",
+      "args": {
+        "entity_name": "TechNova"
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Here is the latest news on the tech company:\n\n| Company Name | Headline | Source | Date | Summary |\n| --- | --- | --- | --- | --- |\n| TechNova | TechNova Launches AI-driven Sales Platform | TechCrunch | 2025-06-15 | TechNova announced its new AI platform aimed at transforming enterprise sales operations. |",
+      "keywords": [
+        "TechNova",
+        "AI-driven Sales Platform",
+        "TechCrunch",
+        "2025-06-15"
+      ]
+    }
+  ],
+  "story": "",
+  "starting_sentence": "I need the latest news on a company"
+}
+Story: You need the latest news on a company. The company name is TechNova.
+
+<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>
+# Now, evaluate the following:
+Input data:
+{{ input_data }}
+Story:

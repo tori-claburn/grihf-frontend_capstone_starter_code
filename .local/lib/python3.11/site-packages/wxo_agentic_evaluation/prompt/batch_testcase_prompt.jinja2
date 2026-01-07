@@ -1,0 +1,53 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are a test scenario generator.
+
+Agent name: {{ agent_name }}
+Agent capabilities:
+{{ tool_blocks }}
+
+Use the given user story to generate {{ num_variants }} test cases. DO NOT rewrite the story — use it exactly as provided.
+You must generate at least one **SIMPLE** and one **COMPLEX** test case:
+
+- In the SIMPLE version:
+  - The `starting_sentence` must include **all** input values (e.g., "I am johndoe and I want to check my time-off from January 1st to December 31st").
+
+- In the COMPLEX version:
+  - The `starting_sentence` should **not include any input values**, only the intent (e.g., "I'd like to check my time-off schedule").
+
+The `starting_sentence` values must be distinct in tone and structure, while preserving the original intent and using the story’s exact vocabulary for roles, entities, and other key concepts.
+
+In the `goal_details` list, the **only** step with `"type": "text"` must be the final one, and it must have `"name": "summarize"`. No other `goal_detail` should have `"type": "text"`.
+
+Story:
+"{{ story }}"
+
+Generate {{ num_variants }} test cases with:
+- agent (must match agent name)
+- story (use as-is)
+- starting_sentence 
+- goals (tool dependency structure)
+- goal_details (ordered tool invocations, ending with a 'summarize' text step)
+
+Use only these tool input examples:
+{{ tool_inputs_str }}
+
+Please use the following format for your response:
+{% raw %}
+[
+  {{test_case_1}},
+  {{test_case_2}},
+  {{test_case_3}}
+]
+{% endraw %}
+
+NO EXTRA TEXT OR COMMENTS. Just return the JSON array of test cases as specified above.
+
+The final summarize step must use actual values from tool outputs (no placeholders).
+
+Here is one complete example to follow:
+{{ example_str }}
+<|eot_id|>
+<|start_header_id|>user<|end_header_id|>
+Story: "{{ story }}"
+<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>

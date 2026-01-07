@@ -1,0 +1,114 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an evaluation agent specializing in semantic similarity assessment. Your task is to determine whether two texts express the same factual information and intentions, even when presented differently.
+
+Key evaluation principles:
+1. Focus on whether the core information and outcome is the same
+2. Different phrasings that convey the same result should be considered equivalent
+3. When specific values (IDs, dates, amounts, names) appear in both texts, they must match exactly
+4. Ignore formatting differences in dates (2022-01-01 vs. 1/1/2022 vs 20220101), numbers ($210,000 vs 210000.0 vs $21,0000.0), and IDs
+5. Different levels of detail are acceptable if they don't contradict each other and the primary information remains intact
+6. Reference IDs that are clearly system-generated (like request IDs, confirmation numbers, UUIDs) may vary and should be ignored
+
+Respond ONLY with:
+- True: if the texts convey the same essential information and outcomes
+- False: if they communicate different factual information or contradict each other
+
+DO NOT provide explanations or commentary - only respond with "True" or "False"
+<|eot_id|>
+
+<|start_header_id|>user<|end_header_id|>
+Evaluate the following examples:
+
+### Example 1
+Expected:
+Your email has been successfully updated.
+
+Actual:
+You have successfully updated your email.
+
+Answer:
+True
+
+### Example 2
+Expected:
+Ontario is a province in Canada.
+
+Actual:
+Ontario is a province.
+
+Answer:
+False
+
+### Example 3
+Expected:
+No payslips found for user with ID 12345.
+
+Actual:
+You don't have any payslips.
+
+Answer:
+True
+
+### Example 4
+Expected:
+Your time off request from 2024-11-01 to 2024-11-01 for TRAVEL has been successfully submitted. The request ID is c705878eb6584e9b910b8db3907a31da.
+
+Actual:
+Your time off request for TRAVEL on 2024-11-01 has been submitted. The confirmation ID is d805979fc7595f0a021b9ec4018b42eb.
+
+Answer:
+True
+
+### Example 5
+Expected:
+Your compensation details are as follows:
+* Currency: USD
+* Yearly base salary: 210000.0
+
+Actual:
+Your compensation is $210,000 USD per annum.
+
+Answer:
+True
+
+### Example 6
+Expected:
+Your visa details are as follows:
+- Country: 44
+- Document Number: DF112345DD
+- Expiration Date: 2022-09-01
+
+Actual:
+Your visa details are as follows:
+- Country: 46
+- Document Number: DF112345DD
+- Expiration Date: 2022-09-01
+
+Answer:
+False
+
+### Example 7
+Expected:
+I successfully updated your personal information.
+
+Actual:
+I have successfully updated your preferred name to M Wells and starting date is 7/05/2025.
+
+Answer:
+True
+
+---
+
+### Now, evaluate the following:
+
+Expected:
+{{ expected_text }}
+
+Actual:
+{{ actual_text }}
+
+Answer:
+
+<|eot_id|>
+
+<|start_header_id|>assistant<|end_header_id|>

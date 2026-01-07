@@ -1,0 +1,195 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+Your task is to generate a starting sentence provided a user story.
+
+## Generation Guidelines
+The starting sentence is the first question a user would ask in order to achieve the provided story.
+The starting sentence shouldn't be the same as the story. The story is the objective of the conversation, while the starting sentence is the initial question a user would ask in order to achieve that objective.
+The generated starting sentence should be a concise, no longer than one sentence, and in first person.
+
+## Output:
+Respond in a JSON format with the following fields:
+- starting_sentence: this is the generated starting sentence 
+
+This is an example of a valid JSON output
+
+{
+    "starting_sentence": "placeholder text",
+}
+
+--
+
+<|start_header_id|>user<|end_header_id|>
+Input:
+{
+  "agent": "workday_employee_support_manager",
+  "goals": {
+    "get_user_workday_ids": [
+      "get_payslips"
+    ],
+    "get_payslips": [
+      "summarize"
+    ]
+  },
+  "goal_details": [
+    {
+      "type": "tool_call",
+      "name": "get_user_workday_ids",
+      "tool_name": "get_user_workday_ids",
+      "args": {
+        "email": "abrennan@workday.net"
+      }
+    },
+    {
+      "type": "tool_call",
+      "name": "get_payslips",
+      "tool_name": "get_payslips",
+      "args": {
+        "user_id": "6dcb8106e8b74b5aabb1fc3ab8ef2b92"
+      }
+    },
+    {
+      "type": "text",
+      "name": "summarize",
+      "response": "No payslips found for user with ID 6dcb8106e8b74b5aabb1fc3ab8ef2b92.",
+      "keywords": [
+        "payslips"
+      ]
+    }
+  ],
+  "story": "Your email id is abrennan@workday.net. You want to get your payslips",
+}
+<|eot_id|>
+
+<|start_header_id|>assistant<|end_header_id|>
+{"starting_sentence": "I work at Workday, I want to get my payslips. My email id is abrennan@workday.net"}
+<|eot_id|>
+
+
+<|start_header_id|>user<|end_header_id|>
+Input:
+{
+  "agent": "servicenow_asset_management_agent",
+  "goals": {
+    "get_assets": [
+      "update_an_asset"
+    ],
+    "update_an_asset": [
+      "summarize"
+    ]
+  },
+  "goal_details": [
+    {
+      "type": "tool_call",
+      "name": "get_assets",
+      "tool_name": "get_assets",
+      "args": {}
+    },
+    {
+      "type": "tool_call",
+      "name": "update_an_asset",
+      "tool_name": "update_an_asset",
+      "args": {
+        "args": {
+          "current_name": "A100",
+          "new_name": "Macbook"
+        }
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "The asset A100 has been updated to Macbook.",
+      "keywords": [
+        "A100",
+        "Macbook"
+      ]
+    }
+  ],
+  "story": "You want to update an asset. The current asset name is A100. You want to update it to Macbook.",
+}
+<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>
+{"starting_sentence": "I want to update an asset"}
+<|eot_id|>
+
+<|start_header_id|>user<|end_header_id|>
+Input:
+{
+  "agent": "sales_research",
+  "goals": {
+    "search_company_by_typeahead": [
+      "get_news_and_media"
+    ],
+    "get_news_and_media": [
+      "summarize"
+    ]
+  },
+  "goal_details": [
+    {
+      "type": "tool_call",
+      "name": "search_company_by_typeahead",
+      "tool_name": "search_company_by_typeahead",
+      "args": {
+        "query": "tech"
+      }
+    },
+    {
+      "type": "tool_call",
+      "name": "get_news_and_media",
+      "tool_name": "get_news_and_media",
+      "args": {
+        "entity_name": "TechNova"
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Here is the latest news on the tech company:\n\n| Company Name | Headline | Source | Date | Summary |\n| --- | --- | --- | --- | --- |\n| TechNova | TechNova Launches AI-driven Sales Platform | TechCrunch | 2025-06-15 | TechNova announced its new AI platform aimed at transforming enterprise sales operations. |",
+      "keywords": [
+        "TechNova",
+        "AI-driven Sales Platform",
+        "TechCrunch",
+        "2025-06-15"
+      ]
+    }
+  ],
+  "story": "You need the latest news on a company. The company name is TechNova.",
+}
+<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>
+{"starting_sentence": "I need the latest news on a company"}
+<|eot_id|>
+
+<|start_header_id|>user<|end_header_id|>
+Input:
+{
+    "agent": "question_answer_agent",
+    "goals": {
+        "summarize": []
+    },
+    "goal_details": [
+        {
+            "name": "summarize",
+            "type": "text",
+            "response": "The current PM of England is Keir Starmer",
+            "keywords": [
+                "Keir Starmer"
+            ]
+        }
+    ],
+    "story": "You want to know who the PM of England is.",
+}
+<|eot_id|>
+
+<|start_header_id|>assistant<|end_header_id|>
+{"starting_sentence": "Who is the PM of the England?"}
+<|eot_id|>
+
+---
+
+<|start_header_id|>assistant<|end_header_id|>
+# Now, evaluate the following:
+Input:
+{{ input_data }}
+Starting sentence:
+
